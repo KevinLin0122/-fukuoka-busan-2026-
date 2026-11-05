@@ -2,16 +2,17 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<meta name="theme-color" content="#10243E">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>福岡・釜山｜2026 秋</title>
 <meta name="description" content="2026.10.26–11.01 福岡、下關、釜山七天行程紀錄">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=Space+Mono:wght@400;700&display=swap">
 <style>
 :root{
-  --paper:#FFFCF6; --ink:#3E3A39; --muted:#857F7B; --grey:#F2EFE8; --grey2:#E7E3DA; --line:#E8E3DA;
-  --accent:#FF5A1F; --accent-soft:#FFEDE3; --white:#fff;
+  --paper:#EDF2F3; --ink:#10243E; --muted:#5E6E82; --grey:#DFE8EA; --grey2:#C5D2D6; --line:#10243E; --soft:#BFCDD2;
+  --accent:#0E8A8C; --accent-soft:#D2EDEC; --stamp:#C8352F; --white:#fff;
   --sea:#1F6FA8; --sea-soft:#E2EEF6;
   --plane:#127FAD; --plane-soft:#E0F1F8;
   --ship:#1F6FA8; --ship-soft:#E2EEF6;
@@ -20,8 +21,9 @@
   --taxi:#A56B00; --taxi-soft:#FCF0D2;
   --walk:#6B6259; --walk-soft:#EFEBE4;
   --cable:#7A4FC4; --cable-soft:#EEE7FA;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif; --mono:"Space Mono",ui-monospace,monospace;
   --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --r-lg:20px; --r-md:14px;
+  --r-lg:10px; --r-md:6px;
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -35,7 +37,7 @@ a{color:inherit}
 .wrap{max-width:640px;margin:0 auto}
 
 /* top bar */
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(255,252,246,.96);
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(16,36,62,.97);
   backdrop-filter:blur(8px);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left)));
   padding-inline:max(16px,env(safe-area-inset-left));border-bottom:1px solid var(--line)}
 .topbar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:10px;height:52px}
@@ -121,7 +123,7 @@ h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
 .stop.must .tm{color:var(--ink)}
 .stop.cx::before{background:var(--paper);border-color:var(--grey2);border-style:dashed}
 .stop.cx .tm{color:var(--muted);text-decoration:line-through}
-.stop.cx .card{background:#FCFAF6;border-style:dashed}
+.stop.cx .card{background:var(--paper);border-style:dashed}
 .stop.cx .card h3{color:var(--muted)}
 .cancelnote{display:flex;gap:10px;align-items:flex-start;background:var(--grey);border-radius:var(--r-lg);padding:14px 16px;font-size:14px;margin-top:16px}
 .cancelnote b{color:var(--accent)}
@@ -170,7 +172,7 @@ h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
 .checks{padding:4px 16px}
 .check{display:flex;gap:12px;align-items:flex-start;padding-block:12px;border-top:1px solid var(--line);cursor:pointer}
 .check:first-child{border-top:0}
-.check input{appearance:none;flex:none;width:22px;height:22px;border:1.5px solid #C9C3BA;border-radius:7px;background:var(--white);margin:1px 0 0;display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
+.check input{appearance:none;flex:none;width:22px;height:22px;border:1.5px solid #10243E;border-radius:7px;background:var(--white);margin:1px 0 0;display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
 .check input:checked{background:var(--accent);border-color:var(--accent)}
 .check input:checked::after{content:"";width:5px;height:10px;border:solid var(--white);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
 .check.done span{color:var(--muted);text-decoration:line-through}
@@ -197,6 +199,111 @@ h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
 .money span{font-size:12px;color:var(--muted)}
 
 footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
+
+/* ===== v2: 夜航藍・車票風 ===== */
+body{font-size:15px;padding-bottom:96px}
+body::before{background:var(--ink)}
+h1,h2,h3,.dayhead h2,.hero h1,.pagehead h1{font-family:var(--serif)}
+.eyebrow,.tm,.flight .no,.flight .date,.times b,.route .pt b,.dayrow .dt,.date b,.stats b,.money b{font-family:var(--mono)}
+.eyebrow{letter-spacing:.12em;font-size:11px;text-transform:uppercase}
+/* bottom nav */
+.topbar{position:fixed;top:auto;bottom:0;left:0;right:0;margin:0;padding:0 0 env(safe-area-inset-bottom,0px);background:var(--ink);border:0;backdrop-filter:none}
+.topbar .in{max-width:640px;height:60px;padding-inline:8px}
+.brand{display:none}
+.tabs{margin:0;width:100%;gap:0}
+.tabs button{flex:1;color:#8FA6BC;font-size:13px;font-weight:500;padding:8px 0 0;display:grid;place-items:center;align-content:center;gap:2px}
+.tabs button::before{content:"";width:6px;height:6px;border-radius:50%;background:transparent;border:1.5px solid currentColor}
+.tabs button[aria-selected="true"]{color:#fff;font-weight:700}
+.tabs button[aria-selected="true"]::before{background:#F2D98B;border-color:#F2D98B}
+.tabs button[aria-selected="true"]::after{display:none}
+@media(max-width:380px){.brand{display:none}}
+/* hard-edge cards */
+.box,.days,.card,.food,.guide,.flight{border:1.5px solid var(--line);box-shadow:3px 3px 0 var(--line)}
+.card,.food,.guide{background:var(--white);border-radius:var(--r-lg)}
+.days{box-shadow:3px 3px 0 var(--line)}
+.dayrow{border-top:1px dashed var(--soft)}
+.check{border-top-color:var(--soft)}
+.days{background:var(--white)}
+.hero{border-width:1.5px}
+.hero svg{background:var(--ink)}
+.hero .txt{background:var(--white)}
+.hero h1{font-size:34px;letter-spacing:.04em}
+.hero h1 em{color:var(--stamp)}
+.stats div{background:none;border:1.5px solid var(--line);border-radius:var(--r-md)}
+.stats div:first-child b{color:var(--accent)}
+.sec-title{margin:34px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.sec-title h2{font-size:19px}
+.sec-title h2::before{content:"▍";color:var(--accent);margin-right:2px}
+/* ticket look for transport */
+.flight{position:relative;background:var(--white)}
+.flight .times{border-top:2px dashed var(--soft)}
+.flight .no{color:var(--white);background:var(--ink);padding:0 8px;border-radius:4px;font-size:12px}
+.route .pt b{font-size:28px}
+/* dates */
+.date{background:var(--white);border:1.5px solid var(--line);border-radius:var(--r-md);min-width:60px}
+.date[aria-pressed="true"]{background:var(--ink);color:var(--white);box-shadow:2px 2px 0 var(--accent)}
+.dayhead h2{font-size:24px}
+.dayhead .meta b{color:var(--accent)}
+/* timeline */
+.timeline::before{background:none;border-left:2px dashed var(--ink);width:0;left:6px}
+.stop::before{border-radius:3px;transform:rotate(45deg);width:11px;height:11px;left:-19px;border:2px solid var(--ink);background:var(--paper)}
+.stop.must::before{background:var(--stamp);border-color:var(--stamp)}
+.tag.must{background:var(--stamp)}
+.tag.flag{background:var(--accent-soft);color:var(--accent)}
+.stop .tm{color:var(--accent);font-size:13px}
+.stop.must .tm{color:var(--stamp)}
+.alt,.split>div,.cancelnote,.tips{background:var(--grey)}
+.alt .lbl{color:var(--accent)}
+/* cancelled = red stamp */
+.dayrow .cx{font-family:var(--serif)}
+.dayrow .cx{color:var(--stamp);border:1.5px solid var(--stamp);border-radius:3px;transform:rotate(-6deg);display:inline-block;font-weight:900;padding:0 4px}
+.dayrow.cancelled .dt{color:var(--muted)}
+.tag.cancel{background:none;color:var(--stamp);border:1.5px solid var(--stamp);font-family:var(--serif);font-weight:900}
+.stop.cx .card{border-style:dashed;box-shadow:none}
+.stop.cx::before{border-color:var(--stamp);background:var(--paper);opacity:.7}
+.stop.cx .tm{color:var(--stamp);opacity:.7}
+.cancelnote{border:1.5px dashed var(--stamp);background:#fff}
+.cancelnote b{color:var(--stamp)}
+/* chips, bars, checks */
+.chip{background:var(--white);border:1.5px solid var(--line);border-radius:var(--r-md)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.bar{height:10px;border-radius:3px;border:1.5px solid var(--line);background:var(--white)}
+.bar i{background:var(--accent)}
+.check input{border-radius:4px;border-width:1.5px}
+.check input:checked{background:var(--accent);border-color:var(--ink)}
+.money div{background:var(--white);border:1.5px solid var(--line)}
+.story{background:var(--white)}
+.dayrow:hover .arrow{color:var(--accent)}
+.food .where{font-family:var(--mono);font-size:11px}
+:focus-visible{outline-color:var(--stamp)}
+
+/* map */
+.mapframe{border:1.5px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:3px 3px 0 var(--line);background:var(--grey);height:210px;margin-top:16px;position:relative}
+.mapframe.big{height:300px;margin-top:12px}
+.mapframe iframe{width:100%;height:100%;border:0;display:block}
+.mapframe::before{content:"地圖載入中…需要網路";position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:var(--muted)}
+.mapframe iframe{position:relative;background:var(--grey)}
+.maplink{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:var(--r-md);padding:0 8px;line-height:1.8;text-decoration:none;white-space:nowrap}
+.maplink svg{width:12px;height:12px}
+.maplink:hover{background:var(--accent);color:#fff}
+.maplink.solid{background:var(--ink);border-color:var(--ink);color:#fff;font-size:13px;padding:2px 12px}
+.mapbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px}
+.mapbar span{font-size:12px;color:var(--muted)}
+.card .tags{align-items:center}
+.card .tags .maplink{margin-left:auto}
+.food .row .maplink{margin-top:2px}
+.food .foot{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.check .maplink{margin-top:4px;display:inline-flex}
+.placelist{display:grid;gap:8px;margin-top:12px}
+.place{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--line);border-radius:var(--r-md);padding:0}
+.place button{all:unset;cursor:pointer;display:grid;gap:0;padding:9px 12px;min-width:0}
+.place button b{font-size:14px;font-weight:700}
+.place button span{font-size:12px;color:var(--muted)}
+.place[aria-current="true"]{box-shadow:3px 3px 0 var(--accent)}
+.place.cx button b{color:var(--muted);text-decoration:line-through}
+.place a.go{align-self:stretch;display:grid;place-items:center;padding:0 14px;border-left:1.5px solid var(--line);font-weight:700;text-decoration:none;color:var(--accent)}
+.place.cx a.go{color:var(--muted)}
+.tabs button{font-size:12.5px}
 </style>
 </head>
 <body>
@@ -206,6 +313,7 @@ footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
   <nav class="tabs" role="tablist" aria-label="主選單">
     <button role="tab" id="tab-home" data-tab="home" aria-selected="true">首頁</button>
     <button role="tab" id="tab-plan" data-tab="plan" aria-selected="false">行程</button>
+    <button role="tab" id="tab-map" data-tab="map" aria-selected="false">地圖</button>
     <button role="tab" id="tab-food" data-tab="food" aria-selected="false">美食</button>
     <button role="tab" id="tab-list" data-tab="list" aria-selected="false">清單</button>
   </nav>
@@ -215,34 +323,34 @@ footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
   <section id="view-home">
     <div class="box hero">
       <svg viewBox="0 0 360 200" role="img" aria-label="福岡塔、渡輪與廣安大橋的插圖">
-        <rect width="360" height="200" fill="#F1EEE8"/>
-        <circle cx="298" cy="42" r="15" fill="#FF5A1F"/>
-        <path d="M-10 150 C40 140 90 136 150 142 C210 148 270 140 370 132 L370 200 L-10 200Z" fill="#DDEBF3"/>
-        <path d="M-10 158 C60 150 120 154 190 158 C250 162 310 156 370 150" fill="none" stroke="#C9DEEB" stroke-width="1.6"/>
-        <path d="M20 172 C70 168 110 174 150 172" fill="none" stroke="#C9DEEB" stroke-width="1.6"/>
-        <path d="M210 176 C250 172 300 178 340 174" fill="none" stroke="#C9DEEB" stroke-width="1.6"/>
+        <rect width="360" height="200" fill="#10243E"/>
+        <circle cx="298" cy="42" r="15" fill="#F2D98B"/>
+        <path d="M-10 150 C40 140 90 136 150 142 C210 148 270 140 370 132 L370 200 L-10 200Z" fill="#1D4468"/>
+        <path d="M-10 158 C60 150 120 154 190 158 C250 162 310 156 370 150" fill="none" stroke="#3A6890" stroke-width="1.6"/>
+        <path d="M20 172 C70 168 110 174 150 172" fill="none" stroke="#3A6890" stroke-width="1.6"/>
+        <path d="M210 176 C250 172 300 178 340 174" fill="none" stroke="#3A6890" stroke-width="1.6"/>
         <!-- 福岡塔 -->
-        <g stroke="#3E3A39" stroke-width="1.8" stroke-linejoin="round">
-          <path d="M52 146 L62 66 L72 146" fill="#FFFCF6"/>
+        <g stroke="#EDF2F3" stroke-width="1.8" stroke-linejoin="round">
+          <path d="M52 146 L62 66 L72 146" fill="#10243E"/>
           <path d="M52 146 L72 146" fill="none"/>
-          <rect x="58" y="56" width="8" height="10" rx="2" fill="#FFFCF6"/>
+          <rect x="58" y="56" width="8" height="10" rx="2" fill="#10243E"/>
           <path d="M62 56 L62 44" fill="none" stroke-width="1.4"/>
         </g>
-        <circle cx="62" cy="42" r="2.4" fill="#FF5A1F"/>
-        <g fill="#E4DFD6">
+        <circle cx="62" cy="42" r="2.4" fill="#F2D98B"/>
+        <g fill="#1B3556">
           <rect x="80" y="120" width="16" height="26" rx="1"/>
           <rect x="98" y="128" width="12" height="18" rx="1"/>
           <rect x="26" y="126" width="18" height="20" rx="1"/>
           <rect x="8" y="134" width="14" height="12" rx="1"/>
         </g>
         <!-- 廣安大橋 -->
-        <g stroke="#8FA0AC" stroke-width="1.6" fill="none">
+        <g stroke="#7FA3BF" stroke-width="1.6" fill="none">
           <path d="M252 148 L252 106 M312 148 L312 106"/>
           <path d="M232 148 L332 148"/>
           <path d="M252 106 L232 148 M252 106 L272 148 M252 106 L292 148 M252 106 L312 148"/>
           <path d="M312 106 L272 148 M312 106 L292 148 M312 106 L332 148"/>
         </g>
-        <g fill="#E4DFD6">
+        <g fill="#1B3556">
           <rect x="266" y="118" width="10" height="30" rx="1"/>
           <rect x="286" y="126" width="12" height="22" rx="1"/>
           <rect x="320" y="122" width="11" height="26" rx="1"/>
@@ -250,27 +358,27 @@ footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
         </g>
         <!-- 渡輪 -->
         <g class="ferry">
-          <path d="M150 140 h62 l-9 15 h-44 z" fill="#3E3A39"/>
-          <rect x="158" y="122" width="42" height="18" rx="2" fill="#FFFCF6" stroke="#3E3A39" stroke-width="1.6"/>
-          <g fill="#FF5A1F">
+          <path d="M150 140 h62 l-9 15 h-44 z" fill="#C8352F"/>
+          <rect x="158" y="122" width="42" height="18" rx="2" fill="#EDF2F3" stroke="#EDF2F3" stroke-width="1.6"/>
+          <g fill="#F2D98B">
             <rect x="163" y="127" width="6" height="5" rx="1"/>
             <rect x="172" y="127" width="6" height="5" rx="1"/>
             <rect x="181" y="127" width="6" height="5" rx="1"/>
             <rect x="190" y="127" width="6" height="5" rx="1"/>
           </g>
-          <rect x="172" y="108" width="10" height="14" rx="2" fill="#3E3A39"/>
-          <rect x="174" y="103" width="6" height="6" rx="1" fill="#FF5A1F"/>
-          <path d="M150 140 h62" stroke="#FFFCF6" stroke-width="1.2"/>
+          <rect x="172" y="108" width="10" height="14" rx="2" fill="#C8352F"/>
+          <rect x="174" y="103" width="6" height="6" rx="1" fill="#F2D98B"/>
+          <path d="M150 140 h62" stroke="#10243E" stroke-width="1.2"/>
         </g>
-        <g stroke="#857F7B" stroke-width="1.3" fill="none" stroke-linecap="round">
+        <g stroke="#9DB7CC" stroke-width="1.3" fill="none" stroke-linecap="round">
           <path d="M144 128 c3 -3 -3 -5 0 -9"/><path d="M139 130 c3 -3 -3 -5 0 -9"/>
         </g>
-        <g fill="#FF5A1F" opacity=".55">
+        <g fill="#F2D98B" opacity=".0">
           <path d="M118 22 c6 2 9 7 6 12 c-5 -1 -8 -6 -6 -12z"/>
           <path d="M212 14 c6 2 9 7 6 12 c-5 -1 -8 -6 -6 -12z"/>
           <path d="M340 60 c6 2 9 7 6 12 c-5 -1 -8 -6 -6 -12z"/>
         </g>
-      </svg>
+      <g fill="#EDF2F3"><circle cx="30" cy="30" r="1.2"/><circle cx="96" cy="18" r="1"/><circle cx="168" cy="34" r="1.2"/><circle cx="236" cy="20" r="1"/><circle cx="214" cy="56" r="1"/><circle cx="330" cy="26" r="1.2"/></g></svg>
       <div class="txt">
         <span class="eyebrow">2026.10.26 – 11.01 · FUKUOKA → BUSAN</span>
         <h1>福岡<em>・</em>釜山</h1>
@@ -313,6 +421,13 @@ footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
     <div class="legend" aria-label="交通圖例" id="legend"></div>
   </section>
 
+  <section id="view-map" hidden>
+    <div class="pagehead"><span class="eyebrow">MAP</span><h1>地點地圖</h1><p>點地點預覽，按右側箭頭用 Google 地圖開啟導航。灰色為颱風取消的原定行程。</p></div>
+    <div class="filters" id="cityChips" role="group" aria-label="城市"></div>
+    <div class="mapframe big"><iframe id="cityMap" title="地圖預覽" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    <div class="placelist" id="placeList"></div>
+  </section>
+
   <section id="view-food" hidden>
     <div class="pagehead"><span class="eyebrow">FOOD LIST</span><h1>這次吃了什麼</h1><p>照著原本排的清單走，分福岡・下關、釜山、慶州三區。</p></div>
     <div class="filters" id="filters" role="group" aria-label="地區"></div>
@@ -348,166 +463,938 @@ footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
 
 <footer>福岡・釜山 2026 — 駿 ＆ 綺</footer>
 
-<script type="application/json" id="trip-data">
-{
-  "transports": [
-    {"kind":"plane","no":"7G800","dir":"去程","date":"10/26（一）","from":"TPE","fromName":"桃園 第一航廈","to":"KKJ","toName":"北九州機場","dur":"3 小時 20 分","dep":"03:00","arr":"06:20","note":"星悅航空。原訂 10/24 被颱風取消，改訂這班。"},
-    {"kind":"ship","no":"HAMAYUU","dir":"跨海","date":"10/27（二）","from":"下關","fromName":"下關港 國際航廈","to":"BUS","toName":"釜山港","dur":"約 12 小時","dep":"19:45","arr":"08:00","note":"關釜渡輪。15:00–18:00 報到，18:30 登船。"},
-    {"kind":"plane","no":"CI191","dir":"回程","date":"11/01（日）","from":"PUS","fromName":"金海國際機場","to":"TPE","toName":"桃園 第一航廈","dur":"1 小時 40 分","dep":"10:10","arr":"11:50","note":"中華航空。07:00 從飯店搭計程車出發。"}
-  ],
-  "days": [
-    {"d":"10/23","w":"五","title":"下班後出發・夜車到桃園","cancelled":true,"out":"原本的行程從這一晚開始",
-     "stops":[
-      {"t":"20:59","go":"train","name":"綺：自強 156 鳳山 → 新左營","note":"21:15 到新左營，轉高鐵 862，21:30 左營 → 23:25 桃園。","must":false},
-      {"t":"22:08","go":"train","name":"駿：區間 1281 七堵 → 南港","note":"22:26 到南港，轉高鐵 567，22:50 南港 → 23:21 桃園；再晚就去北車搭機捷。","must":false},
-      {"t":"23:34","go":"train","name":"桃園捷運 → 第一航廈","note":"兩人會合後進機場，等凌晨 03:00 的紅眼班機。","must":false}
-     ]},
-    {"d":"10/24","w":"六","title":"北九州・廣島","cancelled":true,"out":"7G800 取消，改訂 IT214 岡山，也被取消",
-     "stops":[
-      {"t":"03:00","go":"plane","name":"7G800 桃園 → 北九州","note":"10/22 下午通知取消，緊急改訂 10/24 IT214 桃園 → 岡山；10/23 下午又被通知取消。","must":true,"flag":"兩班都取消"},
-      {"t":"12:00","go":"train","name":"北九州 → 廣島 新幹線","note":"車程 50 分鐘，先到飯店放行李。","must":false},
-      {"t":"14:00","go":"walk","name":"廣島和平紀念資料館","note":"不趕的話先去 PARCO 逛街，這天比較輕鬆。","must":false},
-      {"t":"17:00","go":"walk","name":"廣島紙鶴塔","note":"傍晚上去看市景。","must":false},
-      {"t":"19:00","go":"walk","name":"廣島燒之村","note":"晚餐廣島燒，宵夜燒鳥。","must":false}
-     ]},
-    {"d":"10/25","w":"日","title":"宮島・鹿","cancelled":true,"out":"隔天本來要去宮島看大鳥居",
-     "stops":[
-      {"t":"09:00","go":"ship","name":"宮島 世界遺產航線","note":"去程搭船、回程搭 JR，兩種都體驗。","must":true},
-      {"t":"10:30","go":"cable","name":"獅子岩展望台","note":"先爬一段再搭纜車上山。","must":false},
-      {"t":"12:00","go":"walk","name":"午餐：牡蠣料理","note":"宮島牡蠣，宵夜再補一輪生牡蠣。","must":false},
-      {"t":"14:00","go":"walk","name":"大鳥居散步","note":"下午 14:00 接大鳥居散步。","must":true}
-     ]},
-    {"d":"10/26","w":"一","title":"抵達北九州・直奔博多","out":"03:00 起飛，06:20 落地，一天當兩天用",
-     "stops":[
-      {"t":"06:20","go":"plane","name":"北九州機場 KKJ","note":"入境後搭機場巴士往小倉，7:30 的班次 8:03 到小倉站。","must":true},
-      {"t":"08:30","go":"train","name":"小倉 → 博多 新幹線","note":"車程 15 分鐘，希望 9 點前到博多站。","must":false},
-      {"t":"09:00","go":"walk","name":"博多站筑紫口 FORZA 飯店 2 館","note":"先寄放行李再出門，晚上才 check in。","must":false},
-      {"t":"10:00","go":"walk","name":"治一郎布丁・櫛田神社・博多運河城","note":"運河城的法式可麗餅 10 點開，這段預留約 2 小時。","must":false},
-      {"t":"12:30","go":"walk","name":"午餐：大砲拉麵（天神）","note":"吃完接天神地下街，一路逛到 PARCO。","must":false},
-      {"t":"14:00","go":"walk","name":"天神地下街・福岡三越 Chiikawa 快閃・PARCO","note":"Chiikawa 快閃在福岡三越 9F，10:00–19:00。這段排 3–4 小時。","must":true},
-      {"t":"18:00","go":"walk","name":"晚餐：博多燒鳥","note":"回博多車站附近吃，吃完順路逛車站。","must":false},
-      {"t":"19:30","go":"walk","name":"博多車站逛街","note":"寶可夢中心、LOWRYS FARM（JR 博多城 AMU EST B1）、UNIQLO、MUJI，多數 20:00 關。","must":false},
-      {"t":"21:00","go":"train","name":"宵夜：燒肉上（藥院）","note":"吃完可去附近的唐吉訶德 福岡天神本店，飯店附近兩間 SUGI 藥局 24 小時。","must":false},
-      {"t":"","go":"walk","name":"有楓葉的話：大濠公園旁舞鶴公園","note":"想跑遠一點可以去竈門神社。","must":false}
-     ]},
-    {"d":"10/27","w":"二","title":"博多 → 小倉 → 下關・上船","out":"下午三點前進下關港報到",
-     "stops":[
-      {"t":"08:00","go":"walk","name":"飯店早餐","note":"吃飽再去買麵包。","must":false},
-      {"t":"09:30","go":"walk","name":"Pain Stock 買麵包","note":"博多的人氣麵包店，買完回飯店收行李。","must":true},
-      {"t":"11:00","go":"train","name":"小倉城走走","note":"方案二：飯店附近逛逛後去小倉城，16:30 以前前往下關。","must":false,
-       "alt":{"name":"方案一：不去小倉城","note":"早上吃完早餐買完麵包，下午直接前往下關，時間更鬆。"}},
-      {"t":"12:30","go":"walk","name":"午餐：門司港咖啡廳義大利麵","note":"下午茶也留在門司港。","must":false},
-      {"t":"15:00","go":"train","name":"下關港 國際航廈 報到","note":"15:00–18:00 完成乘船手續，18:30 登船。","must":true,
-       "flag":"務必 18:00 前完成"},
-      {"t":"18:30","go":"ship","name":"關釜渡輪 HAMAYUU 登船","note":"晚餐買下關壽司便當上船吃，19:45 出港。","must":true}
-     ]},
-    {"d":"10/28","w":"三","title":"抵達釜山・海雲台","out":"08:00 靠港，先去海雲台放行李",
-     "stops":[
-      {"t":"08:00","go":"ship","name":"抵達釜山港","note":"出關後直接往海雲台，先寄行李。","must":true},
-      {"t":"10:30","go":"train","name":"海雲台藍線公園 膠囊列車","note":"尾浦站 → 青沙浦，時段抓 10:30 左右；票要先線上買。","must":true},
-      {"t":"11:30","go":"train","name":"海岸列車 青沙浦 → 松亭","note":"下車後在松亭附近吃午餐。","must":false},
-      {"t":"12:30","go":"walk","name":"午餐：31 公分海鮮刀切麵","note":"","must":false},
-      {"t":"14:00","go":"taxi","name":"滑坡車＋樂天世界","note":"從松亭搭計程車過去，玩到傍晚。","must":false},
-      {"t":"18:00","go":"taxi","name":"晚餐：牛室韓牛／牛骨湯","note":"回海雲台吃。","must":false},
-      {"t":"21:00","go":"walk","name":"宵夜：炸雞","note":"海雲台附近外帶回飯店。","must":false}
-     ]},
-    {"d":"10/29","w":"四","title":"松島纜車・研討會","out":"下午分頭：一個去研討會，一個去做臉",
-     "stops":[
-      {"t":"08:30","go":"walk","name":"早餐：鮑魚粥","note":"","must":false},
-      {"t":"10:00","go":"cable","name":"松島海上纜車","note":"搭完在松島走走，接近中午往南浦／札嘎其移動。","must":true},
-      {"t":"12:00","go":"taxi","name":"札嘎其市場 帝王蟹／青魽","note":"市場現點現吃，抓兩小時。","must":true},
-      {"t":"15:00","go":"taxi","name":"分頭行動","note":"",
-       "split":[{"who":"綺","what":"미담의원 做臉（預約 15:00）"},{"who":"駿","what":"研討會"}],"must":false},
-      {"t":"18:30","go":"walk","name":"晚餐：鍾哥＋螞蟻家章蝦腸","note":"有約到的話一起吃。","must":false},
-      {"t":"21:30","go":"walk","name":"宵夜：辣炒年糕","note":"","must":false}
-     ]},
-    {"d":"10/30","w":"五","title":"慶州一日遊","out":"KKDAY 慶州 UNESCO 一日遊",
-     "stops":[
-      {"t":"08:00","go":"bus","name":"一日遊集合出發","note":"KKDAY 慶州 UNESCO 世界遺產行程。","must":false,
-       "alt":{"name":"不去慶州的話","note":"留在釜山做醫美：保養、除鬍子、腋下毛。"}},
-      {"t":"12:00","go":"walk","name":"午餐：慶州豬排","note":"","must":false},
-      {"t":"17:00","go":"bus","name":"回釜山","note":"","must":false},
-      {"t":"18:30","go":"taxi","name":"晚餐：hyejane 野生盲鰻本店","note":"","must":false},
-      {"t":"21:00","go":"walk","name":"宵夜：豬腳外帶回飯店","note":"","must":false}
-     ]},
-    {"d":"10/31","w":"六","title":"西面・汗蒸幕・廣安里","out":"白天放鬆，晚上看無人機表演",
-     "stops":[
-      {"t":"10:00","go":"walk","name":"西面逛街","note":"百貨與地下街都在這一帶。","must":false},
-      {"t":"12:00","go":"walk","name":"午餐：西面","note":"","must":false},
-      {"t":"14:00","go":"walk","name":"汗蒸幕","note":"好好放鬆一下，抓三小時。","must":true},
-      {"t":"18:00","go":"taxi","name":"廣安里晚餐＋無人機表演","note":"訂一間看得到海的餐廳，邊吃邊看。","must":true},
-      {"t":"21:00","go":"walk","name":"豬肉湯飯","note":"回程再吃一碗收尾。","must":false}
-     ]},
-    {"d":"11/01","w":"日","title":"回台灣","out":"10:10 的飛機，不能睡飽",
-     "stops":[
-      {"t":"06:00","go":"walk","name":"起床收行李","note":"前一天先收好。","must":false},
-      {"t":"06:30","go":"walk","name":"早餐：london bagel","note":"外帶在車上吃也可以。","must":false},
-      {"t":"07:00","go":"taxi","name":"計程車往金海機場","note":"抓 1 小時車程，8 點前到機場。","must":true},
-      {"t":"10:10","go":"plane","name":"CI191 起飛","note":"11:50 抵達桃園第一航廈。","must":true}
-     ]}
-  ],
-  "food":[
-    {"area":"福岡・下關","name":"大砲拉麵","where":"天神","note":"10/26 午餐，天神一帶。"},
-    {"area":"福岡・下關","name":"治一郎布丁","where":"博多","note":"10/26 下午，配櫛田神社、運河城。"},
-    {"area":"福岡・下關","name":"Pain Stock","where":"博多","note":"10/26 或 10/27 早上去買麵包。"},
-    {"area":"福岡・下關","name":"燒肉上","where":"藥院","note":"10/26 宵夜，21:00 的時段。"},
-    {"area":"福岡・下關","name":"牛腸鍋（鉄なべ／天神ホルモン／挽肉と米）","where":"博多・天神","note":"清單上的備選，看當天心情挑一間。"},
-    {"area":"福岡・下關","name":"拉麵（大砲／一双／ShinShin）","where":"天神・博多","note":"宵夜或隔天早餐的備案。"},
-    {"area":"福岡・下關","name":"FullFull 明太子麵包","where":"博多","note":"10/27 早餐選項。"},
-    {"area":"福岡・下關","name":"門司港咖啡廳","where":"門司港","note":"10/27 午餐與下午茶。"},
-    {"area":"福岡・下關","name":"下關壽司便當","where":"下關","note":"10/27 買上船當晚餐。"},
-    {"area":"釜山","name":"31 公分海鮮刀切麵","where":"海雲台","note":"10/28 午餐。"},
-    {"area":"釜山","name":"牛室韓牛／牛骨湯","where":"海雲台","note":"10/28 晚餐。"},
-    {"area":"釜山","name":"炸雞","where":"海雲台","note":"10/28 宵夜。"},
-    {"area":"釜山","name":"鮑魚粥","where":"釜山","note":"10/29 早餐。"},
-    {"area":"釜山","name":"札嘎其市場 帝王蟹・青魽","where":"南浦・札嘎其","note":"10/29 午餐，市場現點。"},
-    {"area":"釜山","name":"螞蟻家章蝦腸（鍾哥）","where":"釜山","note":"10/29 晚餐。"},
-    {"area":"釜山","name":"辣炒年糕","where":"釜山","note":"10/29 宵夜。"},
-    {"area":"釜山","name":"hyejane 野生盲鰻本店","where":"釜山","note":"10/30 晚餐。"},
-    {"area":"釜山","name":"豬腳外帶","where":"釜山","note":"10/30 宵夜回飯店吃。"},
-    {"area":"釜山","name":"豬肉湯飯","where":"廣安里・西面","note":"10/31 晚餐或收尾宵夜。"},
-    {"area":"釜山","name":"london bagel","where":"釜山","note":"11/1 回程早餐。"},
-    {"area":"慶州","name":"慶州豬排","where":"慶州","note":"10/30 一日遊午餐。"}
-  ],
-  "shop":[
-    {"name":"ASICS WALKING 皮鞋","who":"駿","note":"天神 2-7-22 專門店先試穿，10:30–19:00"},
-    {"name":"GLOBAL WORK 男裝","who":"駿","note":"運河城 East 2F／3F，10:00–21:00"},
-    {"name":"簡約男裝（BEAMS／BEAUTY&YOUTH）","who":"駿","note":"BEAMS 福岡 PARCO 新館 2F；BEAUTY&YOUTH Solaria Plaza 2F"},
-    {"name":"止汗除臭滾珠液","who":"駿","note":"藥妝店"},
-    {"name":"KIP PYROL Hi 萬用藥用軟膏 40g","who":"駿","note":"傷口清潔護理"},
-    {"name":"防螨用品","who":"—","note":"品項依原本清單的圖片確認"},
-    {"name":"UNIQLO 輕暖背心","who":"爸爸","note":"博多站附近就有"},
-    {"name":"DHC 護唇膏","who":"媽媽","note":"藥妝店"},
-    {"name":"睡眠軟糖・小魔女 Doremi 變身器食玩","who":"姐姐","note":"藥妝店／玩具店"}
-  ],
-  "booked":[
-    {"name":"關釜渡輪 HAMAYUU 船票","note":"10/27 下關 19:45 → 10/28 釜山 08:00"},
-    {"name":"海雲台藍線公園 膠囊列車","note":"10/28 10:30 左右，尾浦 → 青沙浦"},
-    {"name":"미담의원 做臉","note":"10/29 15:00，綺"},
-    {"name":"KKDAY 慶州 UNESCO 一日遊","note":"10/30"},
-    {"name":"JR PASS","note":"已預約，新幹線小倉→博多、博多→下關"},
-    {"name":"CI191 回程機票","note":"11/1 10:10 金海 → 桃園"}
-  ],
-  "guides":[
-    {"title":"天神・博多 購物路線","items":[
-      "天神先試 ASICS WALKING 皮鞋，再逛 PARCO（BEAMS 新館 2F）與 Solaria Plaza（BEAUTY&YOUTH 2F）。",
-      "Chiikawa POP UP STORE 在福岡三越 9F，2026/10/16–11/3，10:00–19:00，最後一天 17:00 閉場。",
-      "去運河城時順路逛 GLOBAL WORK キャナルシティ博多店，10:00–21:00。",
-      "博多站周邊：寶可夢中心、LOWRYS FARM（AMU EST B1）、UNIQLO、MUJI，多數 20:00 關。"
-    ]},
-    {"title":"下關港報到流程","items":[
-      "15:00–18:00 在下關港國際航廈完成乘船手續，18:30 登船，19:45 出港。",
-      "先買好下關壽司便當再上船，船上晚餐就解決。",
-      "隔天 08:00 抵達釜山港，出關後直接往海雲台寄行李。"
-    ]},
-    {"title":"海雲台藍線公園怎麼搭","items":[
-      "膠囊列車（天空膠囊）尾浦站 → 青沙浦，票要先線上買，抓 10:30 時段。",
-      "青沙浦換海岸列車到松亭，附近吃午餐。",
-      "松亭再搭計程車去滑坡車與樂天世界。"
-    ]}
-  ]
-}
-</script>
+<script type="application/json" id="trip-data">{
+ "transports": [
+  {
+   "kind": "plane",
+   "no": "7G800",
+   "dir": "去程",
+   "date": "10/26（一）",
+   "from": "TPE",
+   "fromName": "桃園 第一航廈",
+   "to": "KKJ",
+   "toName": "北九州機場",
+   "dur": "3 小時 20 分",
+   "dep": "03:00",
+   "arr": "06:20",
+   "note": "星悅航空。原訂 10/24 被颱風取消，改訂這班。"
+  },
+  {
+   "kind": "ship",
+   "no": "HAMAYUU",
+   "dir": "跨海",
+   "date": "10/27（二）",
+   "from": "下關",
+   "fromName": "下關港 國際航廈",
+   "to": "BUS",
+   "toName": "釜山港",
+   "dur": "約 12 小時",
+   "dep": "19:45",
+   "arr": "08:00",
+   "note": "關釜渡輪。15:00–18:00 報到，18:30 登船。"
+  },
+  {
+   "kind": "plane",
+   "no": "CI191",
+   "dir": "回程",
+   "date": "11/01（日）",
+   "from": "PUS",
+   "fromName": "金海國際機場",
+   "to": "TPE",
+   "toName": "桃園 第一航廈",
+   "dur": "1 小時 40 分",
+   "dep": "10:10",
+   "arr": "11:50",
+   "note": "中華航空。07:00 從飯店搭計程車出發。"
+  }
+ ],
+ "days": [
+  {
+   "d": "10/23",
+   "w": "五",
+   "title": "下班後出發・夜車到桃園",
+   "cancelled": true,
+   "out": "原本的行程從這一晚開始",
+   "stops": [
+    {
+     "t": "20:59",
+     "go": "train",
+     "name": "綺：自強 156 鳳山 → 新左營",
+     "note": "21:15 到新左營，轉高鐵 862，21:30 左營 → 23:25 桃園。",
+     "must": false,
+     "q": "鳳山車站",
+     "c": "tw"
+    },
+    {
+     "t": "22:08",
+     "go": "train",
+     "name": "駿：區間 1281 七堵 → 南港",
+     "note": "22:26 到南港，轉高鐵 567，22:50 南港 → 23:21 桃園；再晚就去北車搭機捷。",
+     "must": false,
+     "q": "七堵車站",
+     "c": "tw"
+    },
+    {
+     "t": "23:34",
+     "go": "train",
+     "name": "桃園捷運 → 第一航廈",
+     "note": "兩人會合後進機場，等凌晨 03:00 的紅眼班機。",
+     "must": false,
+     "q": "桃園國際機場 第一航廈",
+     "c": "tw"
+    }
+   ],
+   "q": "桃園國際機場 第一航廈"
+  },
+  {
+   "d": "10/24",
+   "w": "六",
+   "title": "北九州・廣島",
+   "cancelled": true,
+   "out": "7G800 取消，改訂 IT214 岡山，也被取消",
+   "stops": [
+    {
+     "t": "03:00",
+     "go": "plane",
+     "name": "7G800 桃園 → 北九州",
+     "note": "10/22 下午通知取消，緊急改訂 10/24 IT214 桃園 → 岡山；10/23 下午又被通知取消。",
+     "must": true,
+     "flag": "兩班都取消",
+     "q": "北九州空港",
+     "c": "kita"
+    },
+    {
+     "t": "12:00",
+     "go": "train",
+     "name": "北九州 → 廣島 新幹線",
+     "note": "車程 50 分鐘，先到飯店放行李。",
+     "must": false,
+     "q": "広島駅",
+     "c": "hiro"
+    },
+    {
+     "t": "14:00",
+     "go": "walk",
+     "name": "廣島和平紀念資料館",
+     "note": "不趕的話先去 PARCO 逛街，這天比較輕鬆。",
+     "must": false,
+     "q": "広島平和記念資料館",
+     "c": "hiro"
+    },
+    {
+     "t": "17:00",
+     "go": "walk",
+     "name": "廣島紙鶴塔",
+     "note": "傍晚上去看市景。",
+     "must": false,
+     "q": "おりづるタワー 広島",
+     "c": "hiro"
+    },
+    {
+     "t": "19:00",
+     "go": "walk",
+     "name": "廣島燒之村",
+     "note": "晚餐廣島燒，宵夜燒鳥。",
+     "must": false,
+     "q": "お好み村 広島",
+     "c": "hiro"
+    }
+   ],
+   "q": "広島駅"
+  },
+  {
+   "d": "10/25",
+   "w": "日",
+   "title": "宮島・鹿",
+   "cancelled": true,
+   "out": "隔天本來要去宮島看大鳥居",
+   "stops": [
+    {
+     "t": "09:00",
+     "go": "ship",
+     "name": "宮島 世界遺產航線",
+     "note": "去程搭船、回程搭 JR，兩種都體驗。",
+     "must": true,
+     "q": "宮島口 フェリー乗り場",
+     "c": "hiro"
+    },
+    {
+     "t": "10:30",
+     "go": "cable",
+     "name": "獅子岩展望台",
+     "note": "先爬一段再搭纜車上山。",
+     "must": false,
+     "q": "宮島ロープウェー 獅子岩駅",
+     "c": "hiro"
+    },
+    {
+     "t": "12:00",
+     "go": "walk",
+     "name": "午餐：牡蠣料理",
+     "note": "宮島牡蠣，宵夜再補一輪生牡蠣。",
+     "must": false,
+     "q": "宮島 表参道商店街",
+     "c": "hiro"
+    },
+    {
+     "t": "14:00",
+     "go": "walk",
+     "name": "大鳥居散步",
+     "note": "下午 14:00 接大鳥居散步。",
+     "must": true,
+     "q": "嚴島神社 大鳥居",
+     "c": "hiro"
+    }
+   ],
+   "q": "嚴島神社"
+  },
+  {
+   "d": "10/26",
+   "w": "一",
+   "title": "抵達北九州・直奔博多",
+   "out": "03:00 起飛，06:20 落地，一天當兩天用",
+   "stops": [
+    {
+     "t": "06:20",
+     "go": "plane",
+     "name": "北九州機場 KKJ",
+     "note": "入境後搭機場巴士往小倉，7:30 的班次 8:03 到小倉站。",
+     "must": true,
+     "q": "北九州空港",
+     "c": "kita"
+    },
+    {
+     "t": "08:30",
+     "go": "train",
+     "name": "小倉 → 博多 新幹線",
+     "note": "車程 15 分鐘，希望 9 點前到博多站。",
+     "must": false,
+     "q": "小倉駅",
+     "c": "kita"
+    },
+    {
+     "t": "09:00",
+     "go": "walk",
+     "name": "博多站筑紫口 FORZA 飯店 2 館",
+     "note": "先寄放行李再出門，晚上才 check in。",
+     "must": false,
+     "q": "ホテルフォルツァ博多駅筑紫口2",
+     "c": "fuk"
+    },
+    {
+     "t": "10:00",
+     "go": "walk",
+     "name": "治一郎布丁・櫛田神社・博多運河城",
+     "note": "運河城的法式可麗餅 10 點開，這段預留約 2 小時。",
+     "must": false,
+     "q": "櫛田神社 博多",
+     "c": "fuk"
+    },
+    {
+     "t": "12:30",
+     "go": "walk",
+     "name": "午餐：大砲拉麵（天神）",
+     "note": "吃完接天神地下街，一路逛到 PARCO。",
+     "must": false,
+     "q": "大砲ラーメン 天神",
+     "c": "fuk"
+    },
+    {
+     "t": "14:00",
+     "go": "walk",
+     "name": "天神地下街・福岡三越 Chiikawa 快閃・PARCO",
+     "note": "Chiikawa 快閃在福岡三越 9F，10:00–19:00。這段排 3–4 小時。",
+     "must": true,
+     "q": "福岡三越",
+     "c": "fuk"
+    },
+    {
+     "t": "18:00",
+     "go": "walk",
+     "name": "晚餐：博多燒鳥",
+     "note": "回博多車站附近吃，吃完順路逛車站。",
+     "must": false,
+     "q": "博多駅 焼き鳥",
+     "c": "fuk"
+    },
+    {
+     "t": "19:30",
+     "go": "walk",
+     "name": "博多車站逛街",
+     "note": "寶可夢中心、LOWRYS FARM（JR 博多城 AMU EST B1）、UNIQLO、MUJI，多數 20:00 關。",
+     "must": false,
+     "q": "JR博多シティ アミュエスト",
+     "c": "fuk"
+    },
+    {
+     "t": "21:00",
+     "go": "train",
+     "name": "宵夜：燒肉上（藥院）",
+     "note": "吃完可去附近的唐吉訶德 福岡天神本店，飯店附近兩間 SUGI 藥局 24 小時。",
+     "must": false,
+     "q": "焼肉 上 薬院",
+     "c": "fuk"
+    },
+    {
+     "t": "",
+     "go": "walk",
+     "name": "有楓葉的話：大濠公園旁舞鶴公園",
+     "note": "想跑遠一點可以去竈門神社。",
+     "must": false,
+     "q": "舞鶴公園 福岡",
+     "c": "fuk"
+    }
+   ],
+   "q": "博多駅"
+  },
+  {
+   "d": "10/27",
+   "w": "二",
+   "title": "博多 → 小倉 → 下關・上船",
+   "out": "下午三點前進下關港報到",
+   "stops": [
+    {
+     "t": "08:00",
+     "go": "walk",
+     "name": "飯店早餐",
+     "note": "吃飽再去買麵包。",
+     "must": false,
+     "q": "ホテルフォルツァ博多駅筑紫口2",
+     "c": "fuk"
+    },
+    {
+     "t": "09:30",
+     "go": "walk",
+     "name": "Pain Stock 買麵包",
+     "note": "博多的人氣麵包店，買完回飯店收行李。",
+     "must": true,
+     "q": "パンストック 福岡",
+     "c": "fuk"
+    },
+    {
+     "t": "11:00",
+     "go": "train",
+     "name": "小倉城走走",
+     "note": "方案二：飯店附近逛逛後去小倉城，16:30 以前前往下關。",
+     "must": false,
+     "alt": {
+      "name": "方案一：不去小倉城",
+      "note": "早上吃完早餐買完麵包，下午直接前往下關，時間更鬆。"
+     },
+     "q": "小倉城",
+     "c": "kita"
+    },
+    {
+     "t": "12:30",
+     "go": "walk",
+     "name": "午餐：門司港咖啡廳義大利麵",
+     "note": "下午茶也留在門司港。",
+     "must": false,
+     "q": "門司港駅",
+     "c": "kita"
+    },
+    {
+     "t": "15:00",
+     "go": "train",
+     "name": "下關港 國際航廈 報到",
+     "note": "15:00–18:00 完成乘船手續，18:30 登船。",
+     "must": true,
+     "flag": "務必 18:00 前完成",
+     "q": "下関港国際ターミナル",
+     "c": "kita"
+    },
+    {
+     "t": "18:30",
+     "go": "ship",
+     "name": "關釜渡輪 HAMAYUU 登船",
+     "note": "晚餐買下關壽司便當上船吃，19:45 出港。",
+     "must": true,
+     "q": "下関港国際ターミナル",
+     "c": "kita"
+    }
+   ],
+   "q": "下関港国際ターミナル"
+  },
+  {
+   "d": "10/28",
+   "w": "三",
+   "title": "抵達釜山・海雲台",
+   "out": "08:00 靠港，先去海雲台放行李",
+   "stops": [
+    {
+     "t": "08:00",
+     "go": "ship",
+     "name": "抵達釜山港",
+     "note": "出關後直接往海雲台，先寄行李。",
+     "must": true,
+     "q": "부산항 국제여객터미널",
+     "c": "bus"
+    },
+    {
+     "t": "10:30",
+     "go": "train",
+     "name": "海雲台藍線公園 膠囊列車",
+     "note": "尾浦站 → 青沙浦，時段抓 10:30 左右；票要先線上買。",
+     "must": true,
+     "q": "해운대 블루라인파크 미포정거장",
+     "c": "bus"
+    },
+    {
+     "t": "11:30",
+     "go": "train",
+     "name": "海岸列車 青沙浦 → 松亭",
+     "note": "下車後在松亭附近吃午餐。",
+     "must": false,
+     "q": "청사포 해변열차 정거장",
+     "c": "bus"
+    },
+    {
+     "t": "12:30",
+     "go": "walk",
+     "name": "午餐：31 公分海鮮刀切麵",
+     "note": "",
+     "must": false,
+     "q": "해운대 해물칼국수",
+     "c": "bus"
+    },
+    {
+     "t": "14:00",
+     "go": "taxi",
+     "name": "滑坡車＋樂天世界",
+     "note": "從松亭搭計程車過去，玩到傍晚。",
+     "must": false,
+     "q": "롯데월드 어드벤처 부산",
+     "c": "bus"
+    },
+    {
+     "t": "18:00",
+     "go": "taxi",
+     "name": "晚餐：牛室韓牛／牛骨湯",
+     "note": "回海雲台吃。",
+     "must": false,
+     "q": "해운대 한우 소고기",
+     "c": "bus"
+    },
+    {
+     "t": "21:00",
+     "go": "walk",
+     "name": "宵夜：炸雞",
+     "note": "海雲台附近外帶回飯店。",
+     "must": false,
+     "q": "해운대 치킨",
+     "c": "bus"
+    }
+   ],
+   "q": "해운대 해수욕장"
+  },
+  {
+   "d": "10/29",
+   "w": "四",
+   "title": "松島纜車・研討會",
+   "out": "下午分頭：一個去研討會，一個去做臉",
+   "stops": [
+    {
+     "t": "08:30",
+     "go": "walk",
+     "name": "早餐：鮑魚粥",
+     "note": "",
+     "must": false,
+     "q": "해운대 전복죽",
+     "c": "bus"
+    },
+    {
+     "t": "10:00",
+     "go": "cable",
+     "name": "松島海上纜車",
+     "note": "搭完在松島走走，接近中午往南浦／札嘎其移動。",
+     "must": true,
+     "q": "송도해상케이블카",
+     "c": "bus"
+    },
+    {
+     "t": "12:00",
+     "go": "taxi",
+     "name": "札嘎其市場 帝王蟹／青魽",
+     "note": "市場現點現吃，抓兩小時。",
+     "must": true,
+     "q": "자갈치시장",
+     "c": "bus"
+    },
+    {
+     "t": "15:00",
+     "go": "taxi",
+     "name": "分頭行動",
+     "note": "",
+     "split": [
+      {
+       "who": "綺",
+       "what": "미담의원 做臉（預約 15:00）"
+      },
+      {
+       "who": "駿",
+       "what": "研討會"
+      }
+     ],
+     "must": false
+    },
+    {
+     "t": "18:30",
+     "go": "walk",
+     "name": "晚餐：鍾哥＋螞蟻家章蝦腸",
+     "note": "有約到的話一起吃。",
+     "must": false,
+     "q": "개미집 낙곱새 부산",
+     "c": "bus"
+    },
+    {
+     "t": "21:30",
+     "go": "walk",
+     "name": "宵夜：辣炒年糕",
+     "note": "",
+     "must": false,
+     "q": "해운대 떡볶이",
+     "c": "bus"
+    }
+   ],
+   "q": "자갈치시장"
+  },
+  {
+   "d": "10/30",
+   "w": "五",
+   "title": "慶州一日遊",
+   "out": "KKDAY 慶州 UNESCO 一日遊",
+   "stops": [
+    {
+     "t": "08:00",
+     "go": "bus",
+     "name": "一日遊集合出發",
+     "note": "KKDAY 慶州 UNESCO 世界遺產行程。",
+     "must": false,
+     "alt": {
+      "name": "不去慶州的話",
+      "note": "留在釜山做醫美：保養、除鬍子、腋下毛。"
+     }
+    },
+    {
+     "t": "12:00",
+     "go": "walk",
+     "name": "午餐：慶州豬排",
+     "note": "",
+     "must": false,
+     "q": "경주 돈까스",
+     "c": "gyeong"
+    },
+    {
+     "t": "17:00",
+     "go": "bus",
+     "name": "回釜山",
+     "note": "",
+     "must": false
+    },
+    {
+     "t": "18:30",
+     "go": "taxi",
+     "name": "晚餐：hyejane 野生盲鰻本店",
+     "note": "",
+     "must": false,
+     "q": "혜자네 야생꼼장어 본점",
+     "c": "bus"
+    },
+    {
+     "t": "21:00",
+     "go": "walk",
+     "name": "宵夜：豬腳外帶回飯店",
+     "note": "",
+     "must": false,
+     "q": "부산 족발",
+     "c": "bus"
+    }
+   ],
+   "q": "경주 대릉원"
+  },
+  {
+   "d": "10/31",
+   "w": "六",
+   "title": "西面・汗蒸幕・廣安里",
+   "out": "白天放鬆，晚上看無人機表演",
+   "stops": [
+    {
+     "t": "10:00",
+     "go": "walk",
+     "name": "西面逛街",
+     "note": "百貨與地下街都在這一帶。",
+     "must": false,
+     "q": "서면역 부산",
+     "c": "bus"
+    },
+    {
+     "t": "12:00",
+     "go": "walk",
+     "name": "午餐：西面",
+     "note": "",
+     "must": false,
+     "q": "서면 먹자골목",
+     "c": "bus"
+    },
+    {
+     "t": "14:00",
+     "go": "walk",
+     "name": "汗蒸幕",
+     "note": "好好放鬆一下，抓三小時。",
+     "must": true,
+     "q": "부산 한증막",
+     "c": "bus"
+    },
+    {
+     "t": "18:00",
+     "go": "taxi",
+     "name": "廣安里晚餐＋無人機表演",
+     "note": "訂一間看得到海的餐廳，邊吃邊看。",
+     "must": true,
+     "q": "광안리 해수욕장",
+     "c": "bus"
+    },
+    {
+     "t": "21:00",
+     "go": "walk",
+     "name": "豬肉湯飯",
+     "note": "回程再吃一碗收尾。",
+     "must": false,
+     "q": "광안리 돼지국밥",
+     "c": "bus"
+    }
+   ],
+   "q": "서면역 부산"
+  },
+  {
+   "d": "11/01",
+   "w": "日",
+   "title": "回台灣",
+   "out": "10:10 的飛機，不能睡飽",
+   "stops": [
+    {
+     "t": "06:00",
+     "go": "walk",
+     "name": "起床收行李",
+     "note": "前一天先收好。",
+     "must": false
+    },
+    {
+     "t": "06:30",
+     "go": "walk",
+     "name": "早餐：london bagel",
+     "note": "外帶在車上吃也可以。",
+     "must": false,
+     "q": "런던 베이글 뮤지엄 부산",
+     "c": "bus"
+    },
+    {
+     "t": "07:00",
+     "go": "taxi",
+     "name": "計程車往金海機場",
+     "note": "抓 1 小時車程，8 點前到機場。",
+     "must": true
+    },
+    {
+     "t": "10:10",
+     "go": "plane",
+     "name": "CI191 起飛",
+     "note": "11:50 抵達桃園第一航廈。",
+     "must": true,
+     "q": "김해국제공항",
+     "c": "bus"
+    }
+   ],
+   "q": "김해국제공항"
+  }
+ ],
+ "food": [
+  {
+   "area": "福岡・下關",
+   "name": "大砲拉麵",
+   "where": "天神",
+   "note": "10/26 午餐，天神一帶。",
+   "q": "大砲ラーメン 天神",
+   "c": "fuk"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "治一郎布丁",
+   "where": "博多",
+   "note": "10/26 下午，配櫛田神社、運河城。",
+   "q": "治一郎 博多",
+   "c": "fuk"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "Pain Stock",
+   "where": "博多",
+   "note": "10/26 或 10/27 早上去買麵包。",
+   "q": "パンストック 福岡",
+   "c": "fuk"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "燒肉上",
+   "where": "藥院",
+   "note": "10/26 宵夜，21:00 的時段。",
+   "q": "焼肉 上 薬院",
+   "c": "fuk"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "牛腸鍋（鉄なべ／天神ホルモン／挽肉と米）",
+   "where": "博多・天神",
+   "note": "清單上的備選，看當天心情挑一間。",
+   "q": "天神ホルモン 天神",
+   "c": "fuk"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "拉麵（大砲／一双／ShinShin）",
+   "where": "天神・博多",
+   "note": "宵夜或隔天早餐的備案。",
+   "q": "ShinShin ラーメン 博多",
+   "c": "fuk"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "FullFull 明太子麵包",
+   "where": "博多",
+   "note": "10/27 早餐選項。",
+   "q": "FullFull 明太子パン 博多",
+   "c": "fuk"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "門司港咖啡廳",
+   "where": "門司港",
+   "note": "10/27 午餐與下午茶。",
+   "q": "門司港 カフェ パスタ",
+   "c": "kita"
+  },
+  {
+   "area": "福岡・下關",
+   "name": "下關壽司便當",
+   "where": "下關",
+   "note": "10/27 買上船當晚餐。",
+   "q": "下関 寿司 下関駅",
+   "c": "kita"
+  },
+  {
+   "area": "釜山",
+   "name": "31 公分海鮮刀切麵",
+   "where": "海雲台",
+   "note": "10/28 午餐。",
+   "q": "해운대 해물칼국수",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "牛室韓牛／牛骨湯",
+   "where": "海雲台",
+   "note": "10/28 晚餐。",
+   "q": "해운대 한우 소고기",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "炸雞",
+   "where": "海雲台",
+   "note": "10/28 宵夜。",
+   "q": "해운대 치킨",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "鮑魚粥",
+   "where": "釜山",
+   "note": "10/29 早餐。",
+   "q": "해운대 전복죽",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "札嘎其市場 帝王蟹・青魽",
+   "where": "南浦・札嘎其",
+   "note": "10/29 午餐，市場現點。",
+   "q": "자갈치시장",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "螞蟻家章蝦腸（鍾哥）",
+   "where": "釜山",
+   "note": "10/29 晚餐。",
+   "q": "개미집 낙곱새 부산",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "辣炒年糕",
+   "where": "釜山",
+   "note": "10/29 宵夜。",
+   "q": "해운대 떡볶이",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "hyejane 野生盲鰻本店",
+   "where": "釜山",
+   "note": "10/30 晚餐。",
+   "q": "혜자네 야생꼼장어 본점",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "豬腳外帶",
+   "where": "釜山",
+   "note": "10/30 宵夜回飯店吃。",
+   "q": "부산 족발",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "豬肉湯飯",
+   "where": "廣安里・西面",
+   "note": "10/31 晚餐或收尾宵夜。",
+   "q": "광안리 돼지국밥",
+   "c": "bus"
+  },
+  {
+   "area": "釜山",
+   "name": "london bagel",
+   "where": "釜山",
+   "note": "11/1 回程早餐。",
+   "q": "런던 베이글 뮤지엄 부산",
+   "c": "bus"
+  },
+  {
+   "area": "慶州",
+   "name": "慶州豬排",
+   "where": "慶州",
+   "note": "10/30 一日遊午餐。",
+   "q": "경주 돈까스",
+   "c": "gyeong"
+  }
+ ],
+ "shop": [
+  {
+   "name": "ASICS WALKING 皮鞋",
+   "who": "駿",
+   "note": "天神 2-7-22 專門店先試穿，10:30–19:00",
+   "q": "ASICS WALKING 福岡店 天神",
+   "c": "fuk"
+  },
+  {
+   "name": "GLOBAL WORK 男裝",
+   "who": "駿",
+   "note": "運河城 East 2F／3F，10:00–21:00",
+   "q": "GLOBAL WORK キャナルシティ博多",
+   "c": "fuk"
+  },
+  {
+   "name": "簡約男裝（BEAMS／BEAUTY&YOUTH）",
+   "who": "駿",
+   "note": "BEAMS 福岡 PARCO 新館 2F；BEAUTY&YOUTH Solaria Plaza 2F",
+   "q": "BEAMS 福岡PARCO 新館",
+   "c": "fuk"
+  },
+  {
+   "name": "止汗除臭滾珠液",
+   "who": "駿",
+   "note": "藥妝店",
+   "q": "スギ薬局 博多駅",
+   "c": "fuk"
+  },
+  {
+   "name": "KIP PYROL Hi 萬用藥用軟膏 40g",
+   "who": "駿",
+   "note": "傷口清潔護理",
+   "q": "スギ薬局 博多駅",
+   "c": "fuk"
+  },
+  {
+   "name": "防螨用品",
+   "who": "—",
+   "note": "品項依原本清單的圖片確認"
+  },
+  {
+   "name": "UNIQLO 輕暖背心",
+   "who": "爸爸",
+   "note": "博多站附近就有",
+   "q": "ユニクロ 博多",
+   "c": "fuk"
+  },
+  {
+   "name": "DHC 護唇膏",
+   "who": "媽媽",
+   "note": "藥妝店",
+   "q": "スギ薬局 博多駅",
+   "c": "fuk"
+  },
+  {
+   "name": "睡眠軟糖・小魔女 Doremi 變身器食玩",
+   "who": "姐姐",
+   "note": "藥妝店／玩具店",
+   "q": "ドン・キホーテ 福岡天神本店",
+   "c": "fuk"
+  }
+ ],
+ "booked": [
+  {
+   "name": "關釜渡輪 HAMAYUU 船票",
+   "note": "10/27 下關 19:45 → 10/28 釜山 08:00"
+  },
+  {
+   "name": "海雲台藍線公園 膠囊列車",
+   "note": "10/28 10:30 左右，尾浦 → 青沙浦"
+  },
+  {
+   "name": "미담의원 做臉",
+   "note": "10/29 15:00，綺"
+  },
+  {
+   "name": "KKDAY 慶州 UNESCO 一日遊",
+   "note": "10/30"
+  },
+  {
+   "name": "JR PASS",
+   "note": "已預約，新幹線小倉→博多、博多→下關"
+  },
+  {
+   "name": "CI191 回程機票",
+   "note": "11/1 10:10 金海 → 桃園"
+  }
+ ],
+ "guides": [
+  {
+   "title": "天神・博多 購物路線",
+   "items": [
+    "天神先試 ASICS WALKING 皮鞋，再逛 PARCO（BEAMS 新館 2F）與 Solaria Plaza（BEAUTY&YOUTH 2F）。",
+    "Chiikawa POP UP STORE 在福岡三越 9F，2026/10/16–11/3，10:00–19:00，最後一天 17:00 閉場。",
+    "去運河城時順路逛 GLOBAL WORK キャナルシティ博多店，10:00–21:00。",
+    "博多站周邊：寶可夢中心、LOWRYS FARM（AMU EST B1）、UNIQLO、MUJI，多數 20:00 關。"
+   ]
+  },
+  {
+   "title": "下關港報到流程",
+   "items": [
+    "15:00–18:00 在下關港國際航廈完成乘船手續，18:30 登船，19:45 出港。",
+    "先買好下關壽司便當再上船，船上晚餐就解決。",
+    "隔天 08:00 抵達釜山港，出關後直接往海雲台寄行李。"
+   ]
+  },
+  {
+   "title": "海雲台藍線公園怎麼搭",
+   "items": [
+    "膠囊列車（天空膠囊）尾浦站 → 青沙浦，票要先線上買，抓 10:30 時段。",
+    "青沙浦換海岸列車到松亭，附近吃午餐。",
+    "松亭再搭計程車去滑坡車與樂天世界。"
+   ]
+  }
+ ]
+}</script>
 
 <script>
 const DATA = JSON.parse(document.getElementById('trip-data').textContent);
@@ -524,6 +1411,20 @@ const ICON = {
 const LABEL = {plane:'飛機',ship:'渡輪',train:'地鐵／火車',bus:'巴士',taxi:'計程車',walk:'步行',cable:'纜車'};
 
 const tag = (k,cls='')=> k ? `<span class="tag ${k} ${cls}">${ICON[k]||''}${LABEL[k]||k}</span>` : '';
+
+
+/* map helpers */
+const PIN='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7m0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5"/></svg>';
+const mapUrl = q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const embedUrl = q=>`https://maps.google.com/maps?q=${encodeURIComponent(q)}&z=14&hl=zh-TW&output=embed`;
+const mapLink = (q,label='地圖')=> q?`<a class="maplink" href="${mapUrl(q)}" target="_blank" rel="noopener">${PIN}${label}</a>`:'';
+function routeUrl(d){
+  const qs=[]; d.stops.forEach(s=>{ if(s.q && qs[qs.length-1]!==s.q) qs.push(s.q); });
+  if(qs.length<2) return mapUrl(qs[0]||d.q);
+  const use=qs.slice(0,10);
+  return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(use[0])}&destination=${encodeURIComponent(use[use.length-1])}`+
+    (use.length>2?`&waypoints=${encodeURIComponent(use.slice(1,-1).join('|'))}`:'');
+}
 
 /* transports */
 document.getElementById('transports').innerHTML = DATA.transports.map(t=>`
@@ -565,12 +1466,14 @@ function renderDay(i){
       <div class="meta"><span>${d.d}（${d.w}）</span><span class="out">${d.out}</span></div>
     </div>
       ${d.cancelled?`<div class="cancelnote"><span>🌀</span><span>這天的行程被<b>薔琵颱風</b>取消，最後沒有去成。原訂 10/24 的 7G800 與替代的 IT214 岡山班機都取消，改到 10/26 才出發。</span></div>`:''}
+    <div class="mapframe"><iframe title="當日地圖" loading="lazy" src="${embedUrl(d.q)}" allowfullscreen></iframe></div>
+    <div class="mapbar"><span>${d.cancelled?'原定行程路線（未成行）':'當日路線'}</span><a class="maplink solid" href="${routeUrl(d)}" target="_blank" rel="noopener">${PIN}開啟當日路線</a></div>
     <ol class="timeline">
       ${d.stops.map(s=>`
         <li class="stop ${d.cancelled?'cx':''} ${s.must?'must':''}">
           <div class="tm">${s.t||'自由'}</div>
           <div class="box card">
-            <div class="tags">${tag(s.go)}${s.must?'<span class="tag must">重點</span>':''}${s.flag?`<span class="tag flag">${s.flag}</span>`:''}</div>
+            <div class="tags">${tag(s.go)}${s.must?'<span class="tag must">重點</span>':''}${s.flag?`<span class="tag flag">${s.flag}</span>`:''}${mapLink(s.q)}</div>
             <h3>${s.name}</h3>
             ${s.note?`<p class="note">${s.note}</p>`:''}
             ${s.split?`<div class="split">${s.split.map(x=>`<div><span class="who">${x.who}</span><span>${x.what}</span></div>`).join('')}</div>`:''}
@@ -590,7 +1493,7 @@ function renderFood(area='全部'){
   document.getElementById('foodView').innerHTML = list.map(f=>`
     <div class="box food">
       <div class="row"><h3>${f.name}</h3><span class="where">${f.where}</span></div>
-      <p>${f.note||''}</p>
+      <div class="foot"><p>${f.note||''}</p>${mapLink(f.q)}</div>
     </div>`).join('');
 }
 renderFood();
@@ -601,7 +1504,7 @@ const done = JSON.parse(localStorage.getItem(SHOP_KEY)||'[]');
 document.getElementById('shopChecks').innerHTML = DATA.shop.map((s,i)=>`
   <label class="check ${done.includes(i)?'done':''}">
     <input type="checkbox" data-i="${i}" ${done.includes(i)?'checked':''}>
-    <span>${s.name}<span class="who">${s.who}・${s.note}</span></span>
+    <span>${s.name}<span class="who">${s.who}・${s.note}</span>${mapLink(s.q)}</span>
   </label>`).join('');
 document.getElementById('bookChecks').innerHTML = DATA.booked.map(b=>`
   <label class="check"><input type="checkbox"><span>${b.name}<span class="who">${b.note}</span></span></label>`).join('');
@@ -626,7 +1529,7 @@ document.getElementById('guides').innerHTML = DATA.guides.map(g=>`
 
 /* tabs */
 function showTab(name){
-  ['home','plan','food','list'].forEach(t=>{
+  ['home','plan','map','food','list'].forEach(t=>{
     document.getElementById('view-'+t).hidden = t!==name;
     document.getElementById('tab-'+t).setAttribute('aria-selected', t===name);
   });
@@ -646,6 +1549,38 @@ document.getElementById('filters').addEventListener('click',e=>{
   document.querySelectorAll('#filters .chip').forEach(c=>c.setAttribute('aria-pressed', c===b));
   renderFood(b.dataset.area);
 });
+
+/* map tab */
+const CITIES=[['fuk','福岡','博多駅'],['kita','北九州・下關','小倉駅'],['bus','釜山','해운대 해수욕장'],['gyeong','慶州','경주 대릉원'],['hiro','廣島・宮島（取消）','広島駅'],['tw','台灣出發（取消）','桃園國際機場 第一航廈']];
+const PLACES=[];
+const seen=new Set();
+DATA.days.forEach(d=>d.stops.forEach(s=>{
+  if(!s.q) return; const k=s.c+'|'+s.q; if(seen.has(k)) return; seen.add(k);
+  PLACES.push({c:s.c,q:s.q,name:s.name.replace(/^(午餐|晚餐|早餐|宵夜)：/,''),sub:`${d.d} ${s.t||''}${d.cancelled?' · 已取消':''}`,cx:!!d.cancelled});
+}));
+DATA.food.forEach(f=>{const k=f.c+'|'+f.q; if(seen.has(k)) return; seen.add(k); PLACES.push({c:f.c,q:f.q,name:f.name,sub:'美食・'+f.where});});
+DATA.shop.forEach(x=>{if(!x.q) return; const k=x.c+'|'+x.q; if(seen.has(k)) return; seen.add(k); PLACES.push({c:x.c,q:x.q,name:x.name,sub:'購物・'+x.who});});
+let curCity='fuk';
+document.getElementById('cityChips').innerHTML=CITIES.map(([k,n])=>`<button class="chip" data-city="${k}" aria-pressed="${k===curCity}">${n}</button>`).join('');
+function renderCity(k){
+  curCity=k; const c=CITIES.find(x=>x[0]===k);
+  document.querySelectorAll('#cityChips .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.city===k));
+  document.getElementById('cityMap').src=embedUrl(c[2]);
+  document.getElementById('placeList').innerHTML=PLACES.filter(p=>p.c===k).map((p,i)=>`
+    <div class="place ${p.cx?'cx':''}" data-q="${p.q}">
+      <button type="button"><b>${p.name}</b><span>${p.sub}</span></button>
+      <a class="go" href="${mapUrl(p.q)}" target="_blank" rel="noopener" aria-label="用 Google 地圖開啟 ${p.name}">↗</a>
+    </div>`).join('');
+}
+document.getElementById('cityChips').addEventListener('click',e=>{const b=e.target.closest('.chip'); if(b) renderCity(b.dataset.city);});
+document.getElementById('placeList').addEventListener('click',e=>{
+  const row=e.target.closest('.place'); if(!row||e.target.closest('a')) return;
+  document.querySelectorAll('.place').forEach(r=>r.removeAttribute('aria-current')); row.setAttribute('aria-current','true');
+  document.getElementById('cityMap').src=embedUrl(row.dataset.q);
+  document.getElementById('cityMap').scrollIntoView({block:'center',behavior:'smooth'});
+});
+let mapInit=false;
+document.getElementById('tab-map').addEventListener('click',()=>{ if(!mapInit){mapInit=true; renderCity(curCity);} });
 
 renderDay(0);
 </script>
