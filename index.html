@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>福岡・釜山｜2026 秋</title>
+<meta name="description" content="2026.10.26–11.01 福岡、下關、釜山七天行程紀錄">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --paper:#FFFCF6; --ink:#3E3A39; --muted:#857F7B; --grey:#F2EFE8; --grey2:#E7E3DA; --line:#E8E3DA;
+  --accent:#FF5A1F; --accent-soft:#FFEDE3; --white:#fff;
+  --sea:#1F6FA8; --sea-soft:#E2EEF6;
+  --plane:#127FAD; --plane-soft:#E0F1F8;
+  --ship:#1F6FA8; --ship-soft:#E2EEF6;
+  --train:#2F63C4; --train-soft:#E4ECFA;
+  --bus:#2E8F63; --bus-soft:#E3F2EA;
+  --taxi:#A56B00; --taxi-soft:#FCF0D2;
+  --walk:#6B6259; --walk-soft:#EFEBE4;
+  --cable:#7A4FC4; --cable-soft:#EEE7FA;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --r-lg:20px; --r-md:14px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.65;
+  padding-inline:max(16px,env(safe-area-inset-left));padding-bottom:56px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+.wrap{max-width:640px;margin:0 auto}
+
+/* top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(255,252,246,.96);
+  backdrop-filter:blur(8px);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left)));
+  padding-inline:max(16px,env(safe-area-inset-left));border-bottom:1px solid var(--line)}
+.topbar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:10px;height:52px}
+.brand{font-weight:700;font-size:15px;letter-spacing:.04em;white-space:nowrap}
+.brand i{font-style:normal;color:var(--accent)}
+.tabs{display:flex;gap:2px;margin-left:auto;height:100%}
+.tabs button{border:0;background:none;padding:0 10px;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;position:relative}
+.tabs button[aria-selected="true"]{color:var(--ink);font-weight:700}
+.tabs button[aria-selected="true"]::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--accent)}
+@media(max-width:380px){.brand{display:none}.tabs{margin-left:0;width:100%;justify-content:space-between}}
+
+h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
+.box{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg)}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:500}
+.sec-title{display:flex;align-items:baseline;gap:10px;margin:30px 0 12px}
+.sec-title h2{font-size:18px;font-weight:700}
+.sec-title .count{margin-left:auto;font-size:13px;color:var(--muted)}
+
+/* hero */
+.hero{margin-top:16px;overflow:hidden}
+.hero svg{display:block;width:100%;height:auto;background:var(--grey)}
+.hero .txt{padding:18px 18px 20px;display:grid;gap:6px}
+.hero h1{font-size:30px;font-weight:900;letter-spacing:.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .crew{color:var(--muted);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.stats div{background:var(--grey);border-radius:var(--r-md);padding:10px 4px;text-align:center}
+.stats b{display:block;font-size:26px;font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums}
+.stats div:first-child b{color:var(--accent)}
+.stats span{font-size:12px;color:var(--muted)}
+.hero .note{font-size:13px;color:var(--muted);margin-top:2px}
+
+/* transport cards */
+.cards{display:grid;gap:12px}
+.flight{display:grid;gap:12px;padding:16px}
+.flight .head{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.flight .no{font-weight:700;color:var(--accent);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.flight .date{color:var(--muted);margin-left:auto;font-variant-numeric:tabular-nums}
+.route{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.route .pt b{display:block;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:.04em}
+.route .pt span{font-size:12px;color:var(--muted)}
+.route .pt.r{text-align:right}
+.route .mid{display:grid;justify-items:center;font-size:12px;color:var(--muted);text-align:center}
+.route .mid svg{width:56px;height:14px}
+.times{display:flex;justify-content:space-between;border-top:1px dashed var(--grey2);padding-top:10px;font-variant-numeric:tabular-nums}
+.times b{font-size:20px;font-weight:700}
+.tnote{font-size:13px;color:var(--muted);margin-top:2px}
+
+/* day list */
+.days{display:grid;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.dayrow{display:grid;grid-template-columns:58px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border:0;border-top:1px solid var(--line);background:none;cursor:pointer;text-align:left;width:100%}
+.dayrow:first-child{border-top:0}
+.dayrow .dt{font-weight:700;font-size:15px;line-height:1.2;font-variant-numeric:tabular-nums}
+.dayrow .dt small{display:block;font-size:12px;font-weight:400;color:var(--muted)}
+.dayrow .tt{min-width:0;font-size:14px}
+.dayrow.cancelled .tt{color:var(--muted)}
+.dayrow.cancelled .dt{color:var(--muted)}
+.dayrow.cancelled .tt s{text-decoration-thickness:1px}
+.dayrow .cx{font-size:11px;font-weight:700;color:var(--muted);border:1px solid var(--grey2);border-radius:5px;padding:0 5px;margin-left:6px;vertical-align:1px}
+.dayrow .arrow{color:var(--muted);transition:transform .15s,color .15s}
+.dayrow:hover .arrow{color:var(--accent);transform:translateX(3px)}
+
+/* plan view */
+.datebar{display:flex;gap:8px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left)));padding-inline:max(16px,env(safe-area-inset-left))}
+.datebar::-webkit-scrollbar{display:none}
+.date{flex:none;border:0;background:var(--grey);border-radius:var(--r-md);padding:7px 12px;min-width:64px;text-align:center;cursor:pointer;transition:background .15s,color .15s}
+.date b{display:block;font-size:16px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
+.date span{display:block;font-size:12px;color:var(--muted)}
+.date[aria-pressed="true"]{background:var(--accent);color:var(--white)}
+.date[aria-pressed="true"] span{color:var(--white);opacity:.85}
+.dayhead{margin-top:18px;display:grid;gap:6px}
+.dayhead h2{font-size:22px;font-weight:900}
+.dayhead .meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px;color:var(--muted)}
+.dayhead .meta b{color:var(--accent);font-weight:700}
+.dayhead .out{font-size:14px}
+
+.timeline{list-style:none;margin:18px 0 0;padding:0 0 0 20px;position:relative}
+.timeline::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:var(--grey2)}
+.stop{position:relative;margin-bottom:14px}
+.stop::before{content:"";position:absolute;left:-20px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.stop.must::before{background:var(--accent);border-color:var(--accent)}
+.stop .tm{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stop.must .tm{color:var(--ink)}
+.stop.cx::before{background:var(--paper);border-color:var(--grey2);border-style:dashed}
+.stop.cx .tm{color:var(--muted);text-decoration:line-through}
+.stop.cx .card{background:#FCFAF6;border-style:dashed}
+.stop.cx .card h3{color:var(--muted)}
+.cancelnote{display:flex;gap:10px;align-items:flex-start;background:var(--grey);border-radius:var(--r-lg);padding:14px 16px;font-size:14px;margin-top:16px}
+.cancelnote b{color:var(--accent)}
+.tag.cancel{background:var(--grey2);color:var(--muted);font-weight:700}
+.card{padding:14px 16px;display:grid;gap:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;border-radius:6px;padding:0 7px;line-height:1.8}
+.tag svg{width:12px;height:12px}
+.tag.plane{background:var(--plane-soft);color:var(--plane)}
+.tag.ship{background:var(--ship-soft);color:var(--ship)}
+.tag.train{background:var(--train-soft);color:var(--train)}
+.tag.bus{background:var(--bus-soft);color:var(--bus)}
+.tag.taxi{background:var(--taxi-soft);color:var(--taxi)}
+.tag.walk{background:var(--walk-soft);color:var(--walk)}
+.tag.cable{background:var(--cable-soft);color:var(--cable)}
+.tag.must{background:var(--accent);color:var(--white);font-weight:700}
+.tag.flag{background:var(--accent-soft);color:var(--accent)}
+.card h3{font-size:17px;font-weight:700}
+.card .sub{font-size:13px;color:var(--muted)}
+.card .note{margin:0;font-size:14px}
+.alt{background:var(--grey);border-radius:var(--r-md);padding:10px 12px;display:grid;gap:3px}
+.alt .lbl{font-size:12px;font-weight:700;color:var(--accent)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.split>div{background:var(--grey);border-radius:var(--r-md);padding:10px 12px;display:grid;gap:2px}
+.split .who{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.08em}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+
+/* food */
+.pagehead{margin-top:22px;display:grid;gap:4px}
+.pagehead h1{font-size:26px;font-weight:900}
+.pagehead p{margin:0;font-size:14px;color:var(--muted)}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:14px 0 2px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.chip{flex:none;border:0;background:var(--grey);border-radius:999px;padding:5px 14px;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--white)}
+.foodlist{display:grid;gap:10px;margin-top:12px}
+.food{padding:14px 16px;display:grid;gap:4px}
+.food .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.food h3{font-size:16px;font-weight:700}
+.food .where{flex:none;font-size:12px;color:var(--muted)}
+.food p{margin:0;font-size:13px;color:var(--muted)}
+
+/* list */
+.bar{height:6px;border-radius:999px;background:var(--grey2);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .3s;width:0}
+.checks{padding:4px 16px}
+.check{display:flex;gap:12px;align-items:flex-start;padding-block:12px;border-top:1px solid var(--line);cursor:pointer}
+.check:first-child{border-top:0}
+.check input{appearance:none;flex:none;width:22px;height:22px;border:1.5px solid #C9C3BA;border-radius:7px;background:var(--white);margin:1px 0 0;display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
+.check input:checked{background:var(--accent);border-color:var(--accent)}
+.check input:checked::after{content:"";width:5px;height:10px;border:solid var(--white);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.check.done span{color:var(--muted);text-decoration:line-through}
+.check .who{font-size:12px;color:var(--muted);display:block}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14px;margin:0;padding:16px}
+.kv dt{color:var(--muted);white-space:nowrap}
+.kv dd{margin:0;min-width:0}
+.tips{padding:16px;background:var(--grey);border-radius:var(--r-lg);font-size:14px}
+.tips ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.tips li::marker{color:var(--accent)}
+.guides{display:grid;gap:12px;margin-top:12px}
+.guide{padding:16px;display:grid;gap:8px}
+.guide h3{font-size:16px;font-weight:700}
+.guide ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14px}
+.guide li::marker{color:var(--accent)}
+
+/* story */
+.story{padding:16px;display:grid;gap:12px}
+.story ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px}
+.story li::marker{color:var(--accent);font-weight:700}
+.money{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.money div{background:var(--grey);border-radius:var(--r-md);padding:10px;text-align:center}
+.money b{display:block;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+.money span{font-size:12px;color:var(--muted)}
+
+footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="in">
+  <div class="brand">福岡<i>・</i>釜山</div>
+  <nav class="tabs" role="tablist" aria-label="主選單">
+    <button role="tab" id="tab-home" data-tab="home" aria-selected="true">首頁</button>
+    <button role="tab" id="tab-plan" data-tab="plan" aria-selected="false">行程</button>
+    <button role="tab" id="tab-food" data-tab="food" aria-selected="false">美食</button>
+    <button role="tab" id="tab-list" data-tab="list" aria-selected="false">清單</button>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section id="view-home">
+    <div class="box hero">
+      <svg viewBox="0 0 360 200" role="img" aria-label="福岡塔、渡輪與廣安大橋的插圖">
+        <rect width="360" height="200" fill="#F1EEE8"/>
+        <circle cx="298" cy="42" r="15" fill="#FF5A1F"/>
+        <path d="M-10 150 C40 140 90 136 150 142 C210 148 270 140 370 132 L370 200 L-10 200Z" fill="#DDEBF3"/>
+        <path d="M-10 158 C60 150 120 154 190 158 C250 162 310 156 370 150" fill="none" stroke="#C9DEEB" stroke-width="1.6"/>
+        <path d="M20 172 C70 168 110 174 150 172" fill="none" stroke="#C9DEEB" stroke-width="1.6"/>
+        <path d="M210 176 C250 172 300 178 340 174" fill="none" stroke="#C9DEEB" stroke-width="1.6"/>
+        <!-- 福岡塔 -->
+        <g stroke="#3E3A39" stroke-width="1.8" stroke-linejoin="round">
+          <path d="M52 146 L62 66 L72 146" fill="#FFFCF6"/>
+          <path d="M52 146 L72 146" fill="none"/>
+          <rect x="58" y="56" width="8" height="10" rx="2" fill="#FFFCF6"/>
+          <path d="M62 56 L62 44" fill="none" stroke-width="1.4"/>
+        </g>
+        <circle cx="62" cy="42" r="2.4" fill="#FF5A1F"/>
+        <g fill="#E4DFD6">
+          <rect x="80" y="120" width="16" height="26" rx="1"/>
+          <rect x="98" y="128" width="12" height="18" rx="1"/>
+          <rect x="26" y="126" width="18" height="20" rx="1"/>
+          <rect x="8" y="134" width="14" height="12" rx="1"/>
+        </g>
+        <!-- 廣安大橋 -->
+        <g stroke="#8FA0AC" stroke-width="1.6" fill="none">
+          <path d="M252 148 L252 106 M312 148 L312 106"/>
+          <path d="M232 148 L332 148"/>
+          <path d="M252 106 L232 148 M252 106 L272 148 M252 106 L292 148 M252 106 L312 148"/>
+          <path d="M312 106 L272 148 M312 106 L292 148 M312 106 L332 148"/>
+        </g>
+        <g fill="#E4DFD6">
+          <rect x="266" y="118" width="10" height="30" rx="1"/>
+          <rect x="286" y="126" width="12" height="22" rx="1"/>
+          <rect x="320" y="122" width="11" height="26" rx="1"/>
+          <rect x="336" y="132" width="12" height="16" rx="1"/>
+        </g>
+        <!-- 渡輪 -->
+        <g class="ferry">
+          <path d="M150 140 h62 l-9 15 h-44 z" fill="#3E3A39"/>
+          <rect x="158" y="122" width="42" height="18" rx="2" fill="#FFFCF6" stroke="#3E3A39" stroke-width="1.6"/>
+          <g fill="#FF5A1F">
+            <rect x="163" y="127" width="6" height="5" rx="1"/>
+            <rect x="172" y="127" width="6" height="5" rx="1"/>
+            <rect x="181" y="127" width="6" height="5" rx="1"/>
+            <rect x="190" y="127" width="6" height="5" rx="1"/>
+          </g>
+          <rect x="172" y="108" width="10" height="14" rx="2" fill="#3E3A39"/>
+          <rect x="174" y="103" width="6" height="6" rx="1" fill="#FF5A1F"/>
+          <path d="M150 140 h62" stroke="#FFFCF6" stroke-width="1.2"/>
+        </g>
+        <g stroke="#857F7B" stroke-width="1.3" fill="none" stroke-linecap="round">
+          <path d="M144 128 c3 -3 -3 -5 0 -9"/><path d="M139 130 c3 -3 -3 -5 0 -9"/>
+        </g>
+        <g fill="#FF5A1F" opacity=".55">
+          <path d="M118 22 c6 2 9 7 6 12 c-5 -1 -8 -6 -6 -12z"/>
+          <path d="M212 14 c6 2 9 7 6 12 c-5 -1 -8 -6 -6 -12z"/>
+          <path d="M340 60 c6 2 9 7 6 12 c-5 -1 -8 -6 -6 -12z"/>
+        </g>
+      </svg>
+      <div class="txt">
+        <span class="eyebrow">2026.10.26 – 11.01 · FUKUOKA → BUSAN</span>
+        <h1>福岡<em>・</em>釜山</h1>
+        <div class="crew">駿 ＆ 綺｜颱風改期後還是出發了</div>
+        <div class="stats">
+          <div><b>7</b><span>天</span></div>
+          <div><b>5</b><span>座城市</span></div>
+          <div><b>2</b><span>個國家</span></div>
+        </div>
+        <div class="note">北九州 → 福岡 → 小倉・下關 → 釜山 → 慶州<br>原定 10/23 出發，颱風取消掉前兩天</div>
+      </div>
+    </div>
+
+    <div class="sec-title"><h2>航班與渡輪</h2><span class="count">星悅航空 · 關釜渡輪 · 中華航空</span></div>
+    <div class="cards" id="transports"></div>
+
+    <div class="sec-title"><h2>行程一覽</h2><span class="count">實際 7 天 ＋ 取消 3 天</span></div>
+    <div class="days" id="dayList"></div>
+
+    <div class="sec-title"><h2>被颱風耽誤的開場</h2></div>
+    <div class="box story">
+      <p class="note" style="margin:0">八月底訂了 10/24 飛北九州的機票，九月底發現同一班只要一半價錢，緊急取消重訂，退票手續費 3,600。以為可以開開心心出門，結果薔琵颱風把一切計畫打亂。</p>
+      <div class="money">
+        <div><b>18,102</b><span>8 月底訂（2 人）</span></div>
+        <div><b>9,258</b><span>9 月底改訂</span></div>
+        <div><b>3,600</b><span>退票手續費</span></div>
+      </div>
+      <ol>
+        <li>10/22 下午：原訂 10/24 7G800 桃園→北九州 取消，緊急改訂 10/24 IT214 桃園→岡山。</li>
+        <li>10/23 下午：IT214 也被取消，再改訂 10/26 7G800。</li>
+        <li>10/26 凌晨 03:00 終於起飛，06:20 抵達北九州。</li>
+      </ol>
+      <p class="note" style="margin:0;color:var(--muted)">原定的廣島、宮島兩天被吃掉，直接從北九州進福岡，10/27 從下關上船去釜山。</p>
+    </div>
+  </section>
+
+  <section id="view-plan" hidden>
+    <div class="datebar" id="dateBar" role="group" aria-label="選擇日期"></div>
+    <div id="dayView"></div>
+    <div class="legend" aria-label="交通圖例" id="legend"></div>
+  </section>
+
+  <section id="view-food" hidden>
+    <div class="pagehead"><span class="eyebrow">FOOD LIST</span><h1>這次吃了什麼</h1><p>照著原本排的清單走，分福岡・下關、釜山、慶州三區。</p></div>
+    <div class="filters" id="filters" role="group" aria-label="地區"></div>
+    <div class="foodlist" id="foodView"></div>
+  </section>
+
+  <section id="view-list" hidden>
+    <div class="pagehead"><span class="eyebrow">CHECKLIST</span><h1>購物與待辦</h1><p id="progText"></p><div class="bar"><i id="progBar"></i></div></div>
+    <div class="sec-title"><h2>採買清單</h2></div>
+    <div class="box"><div class="checks" id="shopChecks"></div></div>
+    <div class="sec-title"><h2>住宿與交通</h2></div>
+    <div class="box"><dl class="kv">
+      <dt>福岡</dt><dd>博多站筑紫口 FORZA 飯店 2 館（10/26 一晚，先放行李再出門）</dd>
+      <dt>釜山</dt><dd>海雲台一帶（10/28 抵達先寄行李）</dd>
+      <dt>跨海</dt><dd>關釜渡輪 HAMAYUU：10/27 19:45 下關港出發，10/28 08:00 抵達釜山港；報到時間 15:00–18:00，18:30 登船</dd>
+      <dt>回程</dt><dd>11/1 06:00 起床，07:00 計程車往金海機場（抓 1 小時），CI191 10:10 起飛</dd>
+    </dl></div>
+    <div class="sec-title"><h2>已預約</h2></div>
+    <div class="box"><div class="checks" id="bookChecks"></div></div>
+    <div class="sec-title"><h2>店家資訊</h2></div>
+    <div class="guides" id="guides"></div>
+    <div class="sec-title"><h2>小提醒</h2></div>
+    <div class="tips"><ul>
+      <li>10/26 到博多先把行李放飯店，博多車站周邊店家多數 20:00 關，逛街排在晚餐後要抓緊。</li>
+      <li>10/27 下關港報到 15:00 開始，18:00 前一定要完成；晚餐買下關壽司便當上船吃。</li>
+      <li>10/29 下午分頭：綺 15:00 미담의원 做臉，駿去研討會，晚餐約鍾哥。</li>
+      <li>膠囊列車（尾浦→青沙浦）票要先線上搶，抓 10:30 左右時段。</li>
+      <li>10/31 晚上訂廣安里餐廳看無人機表演，記得先確認表演日。</li>
+      <li>11/1 回程太早，前一天先收好行李，london bagel 當早餐。</li>
+    </ul></div>
+  </section>
+</main>
+
+<footer>福岡・釜山 2026 — 駿 ＆ 綺</footer>
+
+<script type="application/json" id="trip-data">
+{
+  "transports": [
+    {"kind":"plane","no":"7G800","dir":"去程","date":"10/26（一）","from":"TPE","fromName":"桃園 第一航廈","to":"KKJ","toName":"北九州機場","dur":"3 小時 20 分","dep":"03:00","arr":"06:20","note":"星悅航空。原訂 10/24 被颱風取消，改訂這班。"},
+    {"kind":"ship","no":"HAMAYUU","dir":"跨海","date":"10/27（二）","from":"下關","fromName":"下關港 國際航廈","to":"BUS","toName":"釜山港","dur":"約 12 小時","dep":"19:45","arr":"08:00","note":"關釜渡輪。15:00–18:00 報到，18:30 登船。"},
+    {"kind":"plane","no":"CI191","dir":"回程","date":"11/01（日）","from":"PUS","fromName":"金海國際機場","to":"TPE","toName":"桃園 第一航廈","dur":"1 小時 40 分","dep":"10:10","arr":"11:50","note":"中華航空。07:00 從飯店搭計程車出發。"}
+  ],
+  "days": [
+    {"d":"10/23","w":"五","title":"下班後出發・夜車到桃園","cancelled":true,"out":"原本的行程從這一晚開始",
+     "stops":[
+      {"t":"20:59","go":"train","name":"綺：自強 156 鳳山 → 新左營","note":"21:15 到新左營，轉高鐵 862，21:30 左營 → 23:25 桃園。","must":false},
+      {"t":"22:08","go":"train","name":"駿：區間 1281 七堵 → 南港","note":"22:26 到南港，轉高鐵 567，22:50 南港 → 23:21 桃園；再晚就去北車搭機捷。","must":false},
+      {"t":"23:34","go":"train","name":"桃園捷運 → 第一航廈","note":"兩人會合後進機場，等凌晨 03:00 的紅眼班機。","must":false}
+     ]},
+    {"d":"10/24","w":"六","title":"北九州・廣島","cancelled":true,"out":"7G800 取消，改訂 IT214 岡山，也被取消",
+     "stops":[
+      {"t":"03:00","go":"plane","name":"7G800 桃園 → 北九州","note":"10/22 下午通知取消，緊急改訂 10/24 IT214 桃園 → 岡山；10/23 下午又被通知取消。","must":true,"flag":"兩班都取消"},
+      {"t":"12:00","go":"train","name":"北九州 → 廣島 新幹線","note":"車程 50 分鐘，先到飯店放行李。","must":false},
+      {"t":"14:00","go":"walk","name":"廣島和平紀念資料館","note":"不趕的話先去 PARCO 逛街，這天比較輕鬆。","must":false},
+      {"t":"17:00","go":"walk","name":"廣島紙鶴塔","note":"傍晚上去看市景。","must":false},
+      {"t":"19:00","go":"walk","name":"廣島燒之村","note":"晚餐廣島燒，宵夜燒鳥。","must":false}
+     ]},
+    {"d":"10/25","w":"日","title":"宮島・鹿","cancelled":true,"out":"隔天本來要去宮島看大鳥居",
+     "stops":[
+      {"t":"09:00","go":"ship","name":"宮島 世界遺產航線","note":"去程搭船、回程搭 JR，兩種都體驗。","must":true},
+      {"t":"10:30","go":"cable","name":"獅子岩展望台","note":"先爬一段再搭纜車上山。","must":false},
+      {"t":"12:00","go":"walk","name":"午餐：牡蠣料理","note":"宮島牡蠣，宵夜再補一輪生牡蠣。","must":false},
+      {"t":"14:00","go":"walk","name":"大鳥居散步","note":"下午 14:00 接大鳥居散步。","must":true}
+     ]},
+    {"d":"10/26","w":"一","title":"抵達北九州・直奔博多","out":"03:00 起飛，06:20 落地，一天當兩天用",
+     "stops":[
+      {"t":"06:20","go":"plane","name":"北九州機場 KKJ","note":"入境後搭機場巴士往小倉，7:30 的班次 8:03 到小倉站。","must":true},
+      {"t":"08:30","go":"train","name":"小倉 → 博多 新幹線","note":"車程 15 分鐘，希望 9 點前到博多站。","must":false},
+      {"t":"09:00","go":"walk","name":"博多站筑紫口 FORZA 飯店 2 館","note":"先寄放行李再出門，晚上才 check in。","must":false},
+      {"t":"10:00","go":"walk","name":"治一郎布丁・櫛田神社・博多運河城","note":"運河城的法式可麗餅 10 點開，這段預留約 2 小時。","must":false},
+      {"t":"12:30","go":"walk","name":"午餐：大砲拉麵（天神）","note":"吃完接天神地下街，一路逛到 PARCO。","must":false},
+      {"t":"14:00","go":"walk","name":"天神地下街・福岡三越 Chiikawa 快閃・PARCO","note":"Chiikawa 快閃在福岡三越 9F，10:00–19:00。這段排 3–4 小時。","must":true},
+      {"t":"18:00","go":"walk","name":"晚餐：博多燒鳥","note":"回博多車站附近吃，吃完順路逛車站。","must":false},
+      {"t":"19:30","go":"walk","name":"博多車站逛街","note":"寶可夢中心、LOWRYS FARM（JR 博多城 AMU EST B1）、UNIQLO、MUJI，多數 20:00 關。","must":false},
+      {"t":"21:00","go":"train","name":"宵夜：燒肉上（藥院）","note":"吃完可去附近的唐吉訶德 福岡天神本店，飯店附近兩間 SUGI 藥局 24 小時。","must":false},
+      {"t":"","go":"walk","name":"有楓葉的話：大濠公園旁舞鶴公園","note":"想跑遠一點可以去竈門神社。","must":false}
+     ]},
+    {"d":"10/27","w":"二","title":"博多 → 小倉 → 下關・上船","out":"下午三點前進下關港報到",
+     "stops":[
+      {"t":"08:00","go":"walk","name":"飯店早餐","note":"吃飽再去買麵包。","must":false},
+      {"t":"09:30","go":"walk","name":"Pain Stock 買麵包","note":"博多的人氣麵包店，買完回飯店收行李。","must":true},
+      {"t":"11:00","go":"train","name":"小倉城走走","note":"方案二：飯店附近逛逛後去小倉城，16:30 以前前往下關。","must":false,
+       "alt":{"name":"方案一：不去小倉城","note":"早上吃完早餐買完麵包，下午直接前往下關，時間更鬆。"}},
+      {"t":"12:30","go":"walk","name":"午餐：門司港咖啡廳義大利麵","note":"下午茶也留在門司港。","must":false},
+      {"t":"15:00","go":"train","name":"下關港 國際航廈 報到","note":"15:00–18:00 完成乘船手續，18:30 登船。","must":true,
+       "flag":"務必 18:00 前完成"},
+      {"t":"18:30","go":"ship","name":"關釜渡輪 HAMAYUU 登船","note":"晚餐買下關壽司便當上船吃，19:45 出港。","must":true}
+     ]},
+    {"d":"10/28","w":"三","title":"抵達釜山・海雲台","out":"08:00 靠港，先去海雲台放行李",
+     "stops":[
+      {"t":"08:00","go":"ship","name":"抵達釜山港","note":"出關後直接往海雲台，先寄行李。","must":true},
+      {"t":"10:30","go":"train","name":"海雲台藍線公園 膠囊列車","note":"尾浦站 → 青沙浦，時段抓 10:30 左右；票要先線上買。","must":true},
+      {"t":"11:30","go":"train","name":"海岸列車 青沙浦 → 松亭","note":"下車後在松亭附近吃午餐。","must":false},
+      {"t":"12:30","go":"walk","name":"午餐：31 公分海鮮刀切麵","note":"","must":false},
+      {"t":"14:00","go":"taxi","name":"滑坡車＋樂天世界","note":"從松亭搭計程車過去，玩到傍晚。","must":false},
+      {"t":"18:00","go":"taxi","name":"晚餐：牛室韓牛／牛骨湯","note":"回海雲台吃。","must":false},
+      {"t":"21:00","go":"walk","name":"宵夜：炸雞","note":"海雲台附近外帶回飯店。","must":false}
+     ]},
+    {"d":"10/29","w":"四","title":"松島纜車・研討會","out":"下午分頭：一個去研討會，一個去做臉",
+     "stops":[
+      {"t":"08:30","go":"walk","name":"早餐：鮑魚粥","note":"","must":false},
+      {"t":"10:00","go":"cable","name":"松島海上纜車","note":"搭完在松島走走，接近中午往南浦／札嘎其移動。","must":true},
+      {"t":"12:00","go":"taxi","name":"札嘎其市場 帝王蟹／青魽","note":"市場現點現吃，抓兩小時。","must":true},
+      {"t":"15:00","go":"taxi","name":"分頭行動","note":"",
+       "split":[{"who":"綺","what":"미담의원 做臉（預約 15:00）"},{"who":"駿","what":"研討會"}],"must":false},
+      {"t":"18:30","go":"walk","name":"晚餐：鍾哥＋螞蟻家章蝦腸","note":"有約到的話一起吃。","must":false},
+      {"t":"21:30","go":"walk","name":"宵夜：辣炒年糕","note":"","must":false}
+     ]},
+    {"d":"10/30","w":"五","title":"慶州一日遊","out":"KKDAY 慶州 UNESCO 一日遊",
+     "stops":[
+      {"t":"08:00","go":"bus","name":"一日遊集合出發","note":"KKDAY 慶州 UNESCO 世界遺產行程。","must":false,
+       "alt":{"name":"不去慶州的話","note":"留在釜山做醫美：保養、除鬍子、腋下毛。"}},
+      {"t":"12:00","go":"walk","name":"午餐：慶州豬排","note":"","must":false},
+      {"t":"17:00","go":"bus","name":"回釜山","note":"","must":false},
+      {"t":"18:30","go":"taxi","name":"晚餐：hyejane 野生盲鰻本店","note":"","must":false},
+      {"t":"21:00","go":"walk","name":"宵夜：豬腳外帶回飯店","note":"","must":false}
+     ]},
+    {"d":"10/31","w":"六","title":"西面・汗蒸幕・廣安里","out":"白天放鬆，晚上看無人機表演",
+     "stops":[
+      {"t":"10:00","go":"walk","name":"西面逛街","note":"百貨與地下街都在這一帶。","must":false},
+      {"t":"12:00","go":"walk","name":"午餐：西面","note":"","must":false},
+      {"t":"14:00","go":"walk","name":"汗蒸幕","note":"好好放鬆一下，抓三小時。","must":true},
+      {"t":"18:00","go":"taxi","name":"廣安里晚餐＋無人機表演","note":"訂一間看得到海的餐廳，邊吃邊看。","must":true},
+      {"t":"21:00","go":"walk","name":"豬肉湯飯","note":"回程再吃一碗收尾。","must":false}
+     ]},
+    {"d":"11/01","w":"日","title":"回台灣","out":"10:10 的飛機，不能睡飽",
+     "stops":[
+      {"t":"06:00","go":"walk","name":"起床收行李","note":"前一天先收好。","must":false},
+      {"t":"06:30","go":"walk","name":"早餐：london bagel","note":"外帶在車上吃也可以。","must":false},
+      {"t":"07:00","go":"taxi","name":"計程車往金海機場","note":"抓 1 小時車程，8 點前到機場。","must":true},
+      {"t":"10:10","go":"plane","name":"CI191 起飛","note":"11:50 抵達桃園第一航廈。","must":true}
+     ]}
+  ],
+  "food":[
+    {"area":"福岡・下關","name":"大砲拉麵","where":"天神","note":"10/26 午餐，天神一帶。"},
+    {"area":"福岡・下關","name":"治一郎布丁","where":"博多","note":"10/26 下午，配櫛田神社、運河城。"},
+    {"area":"福岡・下關","name":"Pain Stock","where":"博多","note":"10/26 或 10/27 早上去買麵包。"},
+    {"area":"福岡・下關","name":"燒肉上","where":"藥院","note":"10/26 宵夜，21:00 的時段。"},
+    {"area":"福岡・下關","name":"牛腸鍋（鉄なべ／天神ホルモン／挽肉と米）","where":"博多・天神","note":"清單上的備選，看當天心情挑一間。"},
+    {"area":"福岡・下關","name":"拉麵（大砲／一双／ShinShin）","where":"天神・博多","note":"宵夜或隔天早餐的備案。"},
+    {"area":"福岡・下關","name":"FullFull 明太子麵包","where":"博多","note":"10/27 早餐選項。"},
+    {"area":"福岡・下關","name":"門司港咖啡廳","where":"門司港","note":"10/27 午餐與下午茶。"},
+    {"area":"福岡・下關","name":"下關壽司便當","where":"下關","note":"10/27 買上船當晚餐。"},
+    {"area":"釜山","name":"31 公分海鮮刀切麵","where":"海雲台","note":"10/28 午餐。"},
+    {"area":"釜山","name":"牛室韓牛／牛骨湯","where":"海雲台","note":"10/28 晚餐。"},
+    {"area":"釜山","name":"炸雞","where":"海雲台","note":"10/28 宵夜。"},
+    {"area":"釜山","name":"鮑魚粥","where":"釜山","note":"10/29 早餐。"},
+    {"area":"釜山","name":"札嘎其市場 帝王蟹・青魽","where":"南浦・札嘎其","note":"10/29 午餐，市場現點。"},
+    {"area":"釜山","name":"螞蟻家章蝦腸（鍾哥）","where":"釜山","note":"10/29 晚餐。"},
+    {"area":"釜山","name":"辣炒年糕","where":"釜山","note":"10/29 宵夜。"},
+    {"area":"釜山","name":"hyejane 野生盲鰻本店","where":"釜山","note":"10/30 晚餐。"},
+    {"area":"釜山","name":"豬腳外帶","where":"釜山","note":"10/30 宵夜回飯店吃。"},
+    {"area":"釜山","name":"豬肉湯飯","where":"廣安里・西面","note":"10/31 晚餐或收尾宵夜。"},
+    {"area":"釜山","name":"london bagel","where":"釜山","note":"11/1 回程早餐。"},
+    {"area":"慶州","name":"慶州豬排","where":"慶州","note":"10/30 一日遊午餐。"}
+  ],
+  "shop":[
+    {"name":"ASICS WALKING 皮鞋","who":"駿","note":"天神 2-7-22 專門店先試穿，10:30–19:00"},
+    {"name":"GLOBAL WORK 男裝","who":"駿","note":"運河城 East 2F／3F，10:00–21:00"},
+    {"name":"簡約男裝（BEAMS／BEAUTY&YOUTH）","who":"駿","note":"BEAMS 福岡 PARCO 新館 2F；BEAUTY&YOUTH Solaria Plaza 2F"},
+    {"name":"止汗除臭滾珠液","who":"駿","note":"藥妝店"},
+    {"name":"KIP PYROL Hi 萬用藥用軟膏 40g","who":"駿","note":"傷口清潔護理"},
+    {"name":"防螨用品","who":"—","note":"品項依原本清單的圖片確認"},
+    {"name":"UNIQLO 輕暖背心","who":"爸爸","note":"博多站附近就有"},
+    {"name":"DHC 護唇膏","who":"媽媽","note":"藥妝店"},
+    {"name":"睡眠軟糖・小魔女 Doremi 變身器食玩","who":"姐姐","note":"藥妝店／玩具店"}
+  ],
+  "booked":[
+    {"name":"關釜渡輪 HAMAYUU 船票","note":"10/27 下關 19:45 → 10/28 釜山 08:00"},
+    {"name":"海雲台藍線公園 膠囊列車","note":"10/28 10:30 左右，尾浦 → 青沙浦"},
+    {"name":"미담의원 做臉","note":"10/29 15:00，綺"},
+    {"name":"KKDAY 慶州 UNESCO 一日遊","note":"10/30"},
+    {"name":"JR PASS","note":"已預約，新幹線小倉→博多、博多→下關"},
+    {"name":"CI191 回程機票","note":"11/1 10:10 金海 → 桃園"}
+  ],
+  "guides":[
+    {"title":"天神・博多 購物路線","items":[
+      "天神先試 ASICS WALKING 皮鞋，再逛 PARCO（BEAMS 新館 2F）與 Solaria Plaza（BEAUTY&YOUTH 2F）。",
+      "Chiikawa POP UP STORE 在福岡三越 9F，2026/10/16–11/3，10:00–19:00，最後一天 17:00 閉場。",
+      "去運河城時順路逛 GLOBAL WORK キャナルシティ博多店，10:00–21:00。",
+      "博多站周邊：寶可夢中心、LOWRYS FARM（AMU EST B1）、UNIQLO、MUJI，多數 20:00 關。"
+    ]},
+    {"title":"下關港報到流程","items":[
+      "15:00–18:00 在下關港國際航廈完成乘船手續，18:30 登船，19:45 出港。",
+      "先買好下關壽司便當再上船，船上晚餐就解決。",
+      "隔天 08:00 抵達釜山港，出關後直接往海雲台寄行李。"
+    ]},
+    {"title":"海雲台藍線公園怎麼搭","items":[
+      "膠囊列車（天空膠囊）尾浦站 → 青沙浦，票要先線上買，抓 10:30 時段。",
+      "青沙浦換海岸列車到松亭，附近吃午餐。",
+      "松亭再搭計程車去滑坡車與樂天世界。"
+    ]}
+  ]
+}
+</script>
+
+<script>
+const DATA = JSON.parse(document.getElementById('trip-data').textContent);
+
+const ICON = {
+  plane:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>',
+  ship:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 2h2v3h4l1 6h2l-2 7H6L4 11h2l1-6h4zM3 20c1.5 1 3 1 4.5 0c1.5 1 3 1 4.5 0c1.5 1 3 1 4.5 0c1.5 1 3 1 4.5 0v2c-1.5 1-3 1-4.5 0c-1.5 1-3 1-4.5 0c-1.5 1-3 1-4.5 0c-1.5 1-3 1-4.5 0z"/></svg>',
+  train:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c4 0 7 .6 7 3v9a3 3 0 0 1-3 3l1.5 2.5h-2L14 17h-4l-1.5 2.5h-2L8 17a3 3 0 0 1-3-3V5c0-2.4 3-3 7-3m-5 5v5h10V7zM8.5 13a1 1 0 1 0 0 2a1 1 0 0 0 0-2m7 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2"/></svg>',
+  bus:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2v2h-2v-2H8v2H6v-2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 3v6h12V5zm1.5 8a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m9 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></svg>',
+  taxi:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4.5h11L19 11h2v6h-2v2h-3v-2H8v2H5v-2H3v-6zm3.5-2.5L7.5 12h9l-1-3.5z"/></svg>',
+  walk:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5a2 2 0 1 0-2-2a2 2 0 0 0 2 2M9.8 8.9L7 23h2.1l1.8-8l2.1 2v6h2v-7.5l-2.1-2l.6-3A7.3 7.3 0 0 0 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1c-.3 0-.5 0-.8.1L6 8.3V13h2V9.6z"/></svg>',
+  cable:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4l20-2v2L2 6zm10 3c2 0 3.5.5 3.5 1.5v6c0 1-1.5 1.5-3.5 1.5s-3.5-.5-3.5-1.5v-6C8.5 7.5 10 7 12 7M2 8l5 1v2l-5-1zm20 0v2l-5 1V9z"/></svg>'
+};
+const LABEL = {plane:'飛機',ship:'渡輪',train:'地鐵／火車',bus:'巴士',taxi:'計程車',walk:'步行',cable:'纜車'};
+
+const tag = (k,cls='')=> k ? `<span class="tag ${k} ${cls}">${ICON[k]||''}${LABEL[k]||k}</span>` : '';
+
+/* transports */
+document.getElementById('transports').innerHTML = DATA.transports.map(t=>`
+  <div class="box flight">
+    <div class="head">${tag(t.kind)}<span class="no">${t.no}</span><span>${t.dir}</span><span class="date">${t.date}</span></div>
+    <div class="route">
+      <div class="pt"><b>${t.from}</b><span>${t.fromName}</span></div>
+      <div class="mid"><span>${t.dur}</span>
+        <svg viewBox="0 0 56 14" fill="none" stroke="#857F7B" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="3 3"><path d="M2 7h48"/><path d="M46 3l6 4l-6 4" stroke-dasharray="0"/></svg>
+      </div>
+      <div class="pt r"><b>${t.to}</b><span>${t.toName}</span></div>
+    </div>
+    <div class="times"><div>起 <b>${t.dep}</b></div><div>抵 <b>${t.arr}</b></div></div>
+    ${t.note?`<div class="tnote">${t.note}</div>`:''}
+  </div>`).join('');
+
+/* day list */
+document.getElementById('dayList').innerHTML = DATA.days.map((d,i)=>`
+  <button class="dayrow ${d.cancelled?'cancelled':''}" data-day="${i}">
+    <div class="dt">${d.d}<small>週${d.w}</small></div>
+    <div class="tt">${d.cancelled?`<s>${d.title}</s><span class="cx">取消</span>`:d.title}</div>
+    <div class="arrow">→</div>
+  </button>`).join('');
+
+/* date bar */
+document.getElementById('dateBar').innerHTML = DATA.days.map((d,i)=>
+  `<button class="date" data-day="${i}" aria-pressed="false" ${d.cancelled?'style="opacity:.55"':''}><b>${d.d}</b><span>週${d.w}</span></button>`).join('');
+
+document.getElementById('legend').innerHTML = ['plane','ship','train','bus','taxi','walk','cable']
+  .map(k=>tag(k)).join('') + '<span class="tag must">重點</span>';
+
+function renderDay(i){
+  const d = DATA.days[i];
+  const dayNo = DATA.days.filter(x=>!x.cancelled).indexOf(d)+1;
+  document.getElementById('dayView').innerHTML = `
+    <div class="dayhead">
+      <span class="eyebrow">${d.cancelled?'原定行程 · 已取消':'DAY '+dayNo+' / 7'}</span>
+      <h2>${d.title}</h2>
+      <div class="meta"><span>${d.d}（${d.w}）</span><span class="out">${d.out}</span></div>
+    </div>
+      ${d.cancelled?`<div class="cancelnote"><span>🌀</span><span>這天的行程被<b>薔琵颱風</b>取消，最後沒有去成。原訂 10/24 的 7G800 與替代的 IT214 岡山班機都取消，改到 10/26 才出發。</span></div>`:''}
+    <ol class="timeline">
+      ${d.stops.map(s=>`
+        <li class="stop ${d.cancelled?'cx':''} ${s.must?'must':''}">
+          <div class="tm">${s.t||'自由'}</div>
+          <div class="box card">
+            <div class="tags">${tag(s.go)}${s.must?'<span class="tag must">重點</span>':''}${s.flag?`<span class="tag flag">${s.flag}</span>`:''}</div>
+            <h3>${s.name}</h3>
+            ${s.note?`<p class="note">${s.note}</p>`:''}
+            ${s.split?`<div class="split">${s.split.map(x=>`<div><span class="who">${x.who}</span><span>${x.what}</span></div>`).join('')}</div>`:''}
+            ${s.alt?`<div class="alt"><span class="lbl">${s.alt.name}</span><span>${s.alt.note}</span></div>`:''}
+          </div>
+        </li>`).join('')}
+    </ol>`;
+  document.querySelectorAll('#dateBar .date').forEach(b=>b.setAttribute('aria-pressed', b.dataset.day==i));
+}
+
+/* food */
+const areas = [...new Set(DATA.food.map(f=>f.area))];
+document.getElementById('filters').innerHTML = ['全部',...areas].map((a,i)=>
+  `<button class="chip" data-area="${a}" aria-pressed="${i===0}">${a}</button>`).join('');
+function renderFood(area='全部'){
+  const list = area==='全部'? DATA.food : DATA.food.filter(f=>f.area===area);
+  document.getElementById('foodView').innerHTML = list.map(f=>`
+    <div class="box food">
+      <div class="row"><h3>${f.name}</h3><span class="where">${f.where}</span></div>
+      <p>${f.note||''}</p>
+    </div>`).join('');
+}
+renderFood();
+
+/* lists */
+const SHOP_KEY='fkbusan-shop-2026';
+const done = JSON.parse(localStorage.getItem(SHOP_KEY)||'[]');
+document.getElementById('shopChecks').innerHTML = DATA.shop.map((s,i)=>`
+  <label class="check ${done.includes(i)?'done':''}">
+    <input type="checkbox" data-i="${i}" ${done.includes(i)?'checked':''}>
+    <span>${s.name}<span class="who">${s.who}・${s.note}</span></span>
+  </label>`).join('');
+document.getElementById('bookChecks').innerHTML = DATA.booked.map(b=>`
+  <label class="check"><input type="checkbox"><span>${b.name}<span class="who">${b.note}</span></span></label>`).join('');
+
+function updateProg(){
+  const boxes=[...document.querySelectorAll('#shopChecks input')];
+  const n=boxes.filter(b=>b.checked).length;
+  document.getElementById('progText').textContent=`已完成 ${n} / ${boxes.length} 項`;
+  document.getElementById('progBar').style.width=(n/boxes.length*100)+'%';
+}
+document.getElementById('shopChecks').addEventListener('change',e=>{
+  const boxes=[...document.querySelectorAll('#shopChecks input')];
+  const list=boxes.filter(b=>b.checked).map(b=>+b.dataset.i);
+  localStorage.setItem(SHOP_KEY, JSON.stringify(list));
+  boxes.forEach(b=>b.closest('.check').classList.toggle('done',b.checked));
+  updateProg();
+});
+updateProg();
+
+document.getElementById('guides').innerHTML = DATA.guides.map(g=>`
+  <div class="box guide"><h3>${g.title}</h3><ul>${g.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('');
+
+/* tabs */
+function showTab(name){
+  ['home','plan','food','list'].forEach(t=>{
+    document.getElementById('view-'+t).hidden = t!==name;
+    document.getElementById('tab-'+t).setAttribute('aria-selected', t===name);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+}
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+document.getElementById('dayList').addEventListener('click',e=>{
+  const b=e.target.closest('.dayrow'); if(!b) return;
+  renderDay(+b.dataset.day); showTab('plan');
+});
+document.getElementById('dateBar').addEventListener('click',e=>{
+  const b=e.target.closest('.date'); if(!b) return;
+  renderDay(+b.dataset.day);
+});
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('.chip'); if(!b) return;
+  document.querySelectorAll('#filters .chip').forEach(c=>c.setAttribute('aria-pressed', c===b));
+  renderFood(b.dataset.area);
+});
+
+renderDay(0);
+</script>
+</body>
+</html>
